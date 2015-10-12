@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--Detail Info View Controller-->
+        <scene sceneID="IAq-Vg-FOM">
+            <objects>
+                <viewController id="GQB-UM-SJT" customClass="DetailInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6ig-LV-2ZU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kOz-JG-r4H">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活動資料" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kup-mJ-j1R">
+                                <rect key="frame" x="0.0" y="40" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" semanticContentAttribute="forceRightToLeft" id="lTV-Kq-oBD">
+                                <rect key="frame" x="0.0" y="61" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <barButtonItem image="Paper Plane.png" width="60" style="plain" id="TsX-uv-g0P">
+                                        <connections>
+                                            <action selector="bNavigation_Action:" destination="GQB-UM-SJT" id="iFi-dM-tdO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="Facebook Filled.png" width="60" style="plain" id="JnK-1i-z1B">
+                                        <connections>
+                                            <action selector="bShareFB_Action:" destination="GQB-UM-SJT" id="VZ3-NW-tps"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="Line.png" width="60" style="plain" id="EH0-G2-JHe">
+                                        <connections>
+                                            <action selector="bShareLine_Action:" destination="GQB-UM-SJT" id="AEn-6l-OhC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="PEN-7V-een">
+                                <rect key="frame" x="0.0" y="100" width="375" height="500"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="GQB-UM-SJT" id="IxR-zK-B2c"/>
+                                    <outlet property="delegate" destination="GQB-UM-SJT" id="jtW-C0-4Jf"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint:選擇感興趣的項目，察看活動細節。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WVe-FC-5Sz">
+                                <rect key="frame" x="0.0" y="600" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Dtg-Ow-z5J">
+                                <rect key="frame" x="0.0" y="621" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <barButtonItem image="Home.png" width="50" style="plain" id="acx-Bl-Q9c">
+                                        <connections>
+                                            <action selector="bGotoAction_Action:" destination="GQB-UM-SJT" id="IDl-8c-LHO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="1" image="Left Footprint.png" width="50" style="plain" id="BE8-Dx-Djc">
+                                        <connections>
+                                            <action selector="bGotoScence_Action:" destination="GQB-UM-SJT" id="vVE-YS-16Q"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="2" image="Restaurant.png" width="50" style="plain" id="S8o-yI-2rW">
+                                        <connections>
+                                            <action selector="bGotoFood_Action:" destination="GQB-UM-SJT" id="K36-vW-7zR"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="3" image="Hotel.png" width="50" style="plain" id="zrL-oT-Qrj">
+                                        <connections>
+                                            <action selector="bGotoHotel_Action:" destination="GQB-UM-SJT" id="w6U-eO-XJr"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="4" image="Search.png" width="50" style="plain" id="032-pB-xn7">
+                                        <connections>
+                                            <action selector="bGotoSelf_Action:" destination="GQB-UM-SJT" id="FKb-lk-NiZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="lHint" destination="WVe-FC-5Sz" id="iZo-H3-CiK"/>
+                        <outlet property="lMainTitle" destination="Kup-mJ-j1R" id="D6j-bF-Li4"/>
+                        <outlet property="lwait" destination="kOz-JG-r4H" id="3v7-Kl-Npl"/>
+                        <outlet property="subToolBar" destination="lTV-Kq-oBD" id="dQ4-g2-uv2"/>
+                        <outlet property="thisTableView" destination="PEN-7V-een" id="jcW-Xo-Dfz"/>
+                        <outlet property="thisToolBar" destination="Dtg-Ow-z5J" id="kIe-Gw-e6u"/>
+                        <outlet property="thisView" destination="6ig-LV-2ZU" id="O3S-eg-pKo"/>
+                        <segue destination="dUB-0c-Dn8" kind="modal" identifier="ActionInfo" id="Kj4-8x-Vqr"/>
+                        <segue destination="IKt-0U-GH2" kind="modal" identifier="SceneInfo" id="YNs-Zr-3TO"/>
+                        <segue destination="UTE-yO-x1j" kind="modal" identifier="FoodInfo" id="Y0G-0d-JhP"/>
+                        <segue destination="CVV-HF-H8T" kind="modal" identifier="HotelInfo" id="6aM-2I-ceb"/>
+                        <segue destination="WGH-Ij-xt5" kind="modal" identifier="SelfInfo" id="eIP-O2-fYW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NBh-eR-Jfw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2432.5" y="296.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fQR-KF-7mc">
+                                <rect key="frame" x="0.0" y="30" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="lwait" destination="fQR-KF-7mc" id="YhR-Bz-Vmw"/>
+                        <outlet property="thisView" destination="8bC-Xf-vdC" id="aNJ-Jp-d5n"/>
+                        <segue destination="dUB-0c-Dn8" kind="modal" identifier="ActionInfo" id="UnI-rI-bcU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="47.5" y="296.5"/>
+        </scene>
+        <!--Action Info View Controller-->
+        <scene sceneID="J11-6O-ifP">
+            <objects>
+                <viewController id="dUB-0c-Dn8" customClass="ActionInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dRI-aJ-ko7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H5t-bJ-KYc">
+                                <rect key="frame" x="0.0" y="30" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活動資料" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bVy-Y3-1UM">
+                                <rect key="frame" x="0.0" y="40" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint:選擇感興趣的項目，察看活動細節。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3v9-qF-xcl">
+                                <rect key="frame" x="0.0" y="600" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TEM-ql-85i">
+                                <rect key="frame" x="0.0" y="60" width="375" height="540"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dUB-0c-Dn8" id="2Lg-xv-dRp"/>
+                                    <outlet property="delegate" destination="dUB-0c-Dn8" id="svq-VG-4Ee"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="bPA-Js-7EY">
+                                <rect key="frame" x="0.0" y="621" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="Home.png" width="50" style="plain" id="nLX-Df-3sd">
+                                        <connections>
+                                            <action selector="bGotoAction_Action:" destination="dUB-0c-Dn8" id="p0D-E9-naS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="1" image="Left Footprint.png" width="50" style="plain" id="DVm-LU-zMA">
+                                        <connections>
+                                            <action selector="bGotoScence_Action:" destination="dUB-0c-Dn8" id="1n7-9Z-AmZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="2" image="Restaurant.png" width="50" style="plain" id="zJo-61-QIo">
+                                        <connections>
+                                            <action selector="bGotoFood_Action:" destination="dUB-0c-Dn8" id="bIS-zV-K0B"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="3" image="Hotel.png" width="50" style="plain" id="wDT-5B-IAA">
+                                        <connections>
+                                            <action selector="bGotoHotel_Action:" destination="dUB-0c-Dn8" id="1Nd-CK-RQc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="4" image="Search.png" width="50" style="plain" id="q25-73-aQ3">
+                                        <connections>
+                                            <action selector="bGotoSelf_Action:" destination="dUB-0c-Dn8" id="zve-5U-1B9"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="lHint" destination="3v9-qF-xcl" id="r4r-TM-2fO"/>
+                        <outlet property="lMainTitle" destination="bVy-Y3-1UM" id="WBE-Zd-OC4"/>
+                        <outlet property="lwait" destination="H5t-bJ-KYc" id="Kqk-lP-sxj"/>
+                        <outlet property="thisTableView" destination="TEM-ql-85i" id="6fa-KA-vye"/>
+                        <outlet property="thisToolBar" destination="bPA-Js-7EY" id="WLn-dL-Ih7"/>
+                        <outlet property="thisView" destination="dRI-aJ-ko7" id="kMh-Cg-F5M"/>
+                        <segue destination="IKt-0U-GH2" kind="modal" identifier="SceneInfo" id="B5E-zC-01j"/>
+                        <segue destination="UTE-yO-x1j" kind="modal" identifier="FoodInfo" id="jQt-hq-il6"/>
+                        <segue destination="CVV-HF-H8T" kind="modal" identifier="HotelInfo" id="mE3-dC-cEX"/>
+                        <segue destination="WGH-Ij-xt5" kind="modal" identifier="SelfInfo" id="Sd6-Tq-uKy"/>
+                        <segue destination="GQB-UM-SJT" kind="modal" identifier="DetailInfo" id="KfA-1S-V2g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bCe-tZ-0bt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="445.5" y="296.5"/>
+        </scene>
+        <!--Scence Info View Controller-->
+        <scene sceneID="Hv1-1I-vel">
+            <objects>
+                <viewController id="IKt-0U-GH2" customClass="ScenceInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="21y-Bk-wnS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vg3-Ye-URb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="景點資料" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kZx-Uz-HLM">
+                                <rect key="frame" x="0.0" y="40" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint:選擇感興趣的項目，察看活動細節。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KBK-Yu-aON">
+                                <rect key="frame" x="0.0" y="600" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="JHf-g3-Jmq">
+                                <rect key="frame" x="0.0" y="60" width="375" height="540"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="IKt-0U-GH2" id="20C-tM-b2S"/>
+                                    <outlet property="delegate" destination="IKt-0U-GH2" id="Yc1-c8-OAI"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="DPF-8A-ZHn">
+                                <rect key="frame" x="0.0" y="621" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="Home.png" width="50" style="plain" id="H95-cC-DYS">
+                                        <connections>
+                                            <action selector="bGotoAction_Action:" destination="IKt-0U-GH2" id="mkS-Gn-piE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="1" image="Left Footprint.png" width="50" style="plain" id="zf7-l3-7BT">
+                                        <connections>
+                                            <action selector="bGotoScence_Action:" destination="IKt-0U-GH2" id="CXI-We-CME"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="2" image="Restaurant.png" width="50" style="plain" id="dtN-pw-xf9">
+                                        <connections>
+                                            <action selector="bGotoFood_Action:" destination="IKt-0U-GH2" id="mDN-d8-kLt"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="3" image="Hotel.png" width="50" style="plain" id="mKQ-JO-pZ6">
+                                        <connections>
+                                            <action selector="bGotoHotel_Action:" destination="IKt-0U-GH2" id="mv2-xI-5IC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="4" image="Search.png" width="50" style="plain" id="Lrm-k8-XNG">
+                                        <connections>
+                                            <action selector="bGotoSelf_Action:" destination="IKt-0U-GH2" id="aTG-h1-SRf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="lHint" destination="KBK-Yu-aON" id="hdN-R3-trJ"/>
+                        <outlet property="lMainTitle" destination="kZx-Uz-HLM" id="aVi-I4-24y"/>
+                        <outlet property="lwait" destination="Vg3-Ye-URb" id="QSe-Pc-ABh"/>
+                        <outlet property="thisTableView" destination="JHf-g3-Jmq" id="aXd-yC-Igv"/>
+                        <outlet property="thisToolBar" destination="DPF-8A-ZHn" id="rwU-5M-0Eb"/>
+                        <outlet property="thisView" destination="21y-Bk-wnS" id="Qx7-nD-ijT"/>
+                        <segue destination="dUB-0c-Dn8" kind="modal" identifier="ActionInfo" id="9yz-og-6o7"/>
+                        <segue destination="UTE-yO-x1j" kind="modal" identifier="FoodInfo" id="cR6-RK-2CI"/>
+                        <segue destination="CVV-HF-H8T" kind="modal" identifier="HotelInfo" id="nJx-sx-Pae"/>
+                        <segue destination="WGH-Ij-xt5" kind="modal" identifier="SelfInfo" id="0VM-q7-G44"/>
+                        <segue destination="GQB-UM-SJT" kind="modal" identifier="DetailInfo" id="bxD-gu-rEf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4cC-ts-C8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="845.5" y="296.5"/>
+        </scene>
+        <!--Food Info View Controller-->
+        <scene sceneID="l1b-sv-kSM">
+            <objects>
+                <viewController id="UTE-yO-x1j" customClass="FoodInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Ki-dx-Cfm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="70X-aM-zJS">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="餐飲資料" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wrx-Ru-KJ0">
+                                <rect key="frame" x="0.0" y="40" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint:選擇感興趣的項目，察看活動細節。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SCD-wn-H0R">
+                                <rect key="frame" x="0.0" y="600" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="e4x-iG-ayW">
+                                <rect key="frame" x="0.0" y="60" width="375" height="540"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="UTE-yO-x1j" id="EU7-yQ-JUr"/>
+                                    <outlet property="delegate" destination="UTE-yO-x1j" id="WnE-4s-POC"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="LIo-zu-xgI">
+                                <rect key="frame" x="0.0" y="621" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="Home.png" width="50" style="plain" id="rG8-Vg-m12">
+                                        <connections>
+                                            <action selector="bGotoAction_Action:" destination="UTE-yO-x1j" id="qae-jA-gj0"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="1" image="Left Footprint.png" width="50" style="plain" id="HJ5-RE-a4h">
+                                        <connections>
+                                            <action selector="bGotoScence_Action:" destination="UTE-yO-x1j" id="0jC-SQ-Iem"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="2" image="Restaurant.png" width="50" style="plain" id="kcN-DM-bcf">
+                                        <connections>
+                                            <action selector="bGotoFood_Action:" destination="UTE-yO-x1j" id="Ve3-tn-YGk"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="3" image="Hotel.png" width="50" style="plain" id="V2c-W2-mR6">
+                                        <connections>
+                                            <action selector="bGotoHotel_Action:" destination="UTE-yO-x1j" id="d48-wj-dh3"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="4" image="Search.png" width="50" style="plain" id="PpD-6F-SUa">
+                                        <connections>
+                                            <action selector="bGotoSelf_Action:" destination="UTE-yO-x1j" id="lSW-k0-qdy"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="lHint" destination="SCD-wn-H0R" id="V3g-Ud-DWa"/>
+                        <outlet property="lMainTitle" destination="Wrx-Ru-KJ0" id="zcd-4B-6Re"/>
+                        <outlet property="lwait" destination="70X-aM-zJS" id="jgM-AG-dYO"/>
+                        <outlet property="thisTableView" destination="e4x-iG-ayW" id="dQi-ec-aeK"/>
+                        <outlet property="thisToolBar" destination="LIo-zu-xgI" id="lMZ-U2-qcB"/>
+                        <outlet property="thisView" destination="7Ki-dx-Cfm" id="8gR-a9-jjJ"/>
+                        <segue destination="dUB-0c-Dn8" kind="modal" identifier="ActionInfo" id="fKd-QF-waB"/>
+                        <segue destination="IKt-0U-GH2" kind="modal" identifier="SceneInfo" id="cSD-ar-PRw"/>
+                        <segue destination="CVV-HF-H8T" kind="modal" identifier="HotelInfo" id="a1y-V5-lKm"/>
+                        <segue destination="WGH-Ij-xt5" kind="modal" identifier="SelfInfo" id="DMC-DP-pxf"/>
+                        <segue destination="GQB-UM-SJT" kind="modal" identifier="DetailInfo" id="9GT-Dd-31J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cLH-vM-9vI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1235.5" y="296.5"/>
+        </scene>
+        <!--Hotel Info View Controller-->
+        <scene sceneID="yUy-4g-X64">
+            <objects>
+                <viewController id="CVV-HF-H8T" customClass="HotelInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3lT-hO-aBz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Qw-ut-7ea">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="旅館/民宿資料" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Keb-cs-uZf">
+                                <rect key="frame" x="0.0" y="40" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dn8-0S-yKm">
+                                <rect key="frame" x="0.0" y="64" width="375" height="540"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="CVV-HF-H8T" id="LeX-o3-aVH"/>
+                                    <outlet property="delegate" destination="CVV-HF-H8T" id="Z9f-y6-ecA"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint:選擇感興趣的項目，察看旅館/民宿細節。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3BO-G9-Ke3">
+                                <rect key="frame" x="0.0" y="600" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="D5U-q5-Ihj">
+                                <rect key="frame" x="0.0" y="620" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="Home.png" width="50" style="plain" id="e2T-9v-SFt">
+                                        <connections>
+                                            <action selector="bGotoAction_Action:" destination="CVV-HF-H8T" id="PW1-ZY-7zl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="1" image="Left Footprint.png" width="50" style="plain" id="VVH-ac-RiB">
+                                        <connections>
+                                            <action selector="bGotoScence_Action:" destination="CVV-HF-H8T" id="EBA-EZ-85f"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="2" image="Restaurant.png" width="50" style="plain" id="HIQ-H2-3Mn">
+                                        <connections>
+                                            <action selector="bGotoFood_Action:" destination="CVV-HF-H8T" id="Yvh-KD-11r"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="3" image="Hotel.png" width="50" style="plain" id="StY-d5-uvd">
+                                        <connections>
+                                            <action selector="bGotoHotel_Action:" destination="CVV-HF-H8T" id="1Mj-F8-v8q"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="4" image="Search.png" width="50" style="plain" id="cKO-ks-Bvy">
+                                        <connections>
+                                            <action selector="bGotoSelf_Action:" destination="CVV-HF-H8T" id="sdV-kY-SxD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="lHint" destination="3BO-G9-Ke3" id="LrN-u5-Lia"/>
+                        <outlet property="lMainTitle" destination="Keb-cs-uZf" id="HuD-1S-Jac"/>
+                        <outlet property="lwait" destination="2Qw-ut-7ea" id="SdH-ae-f7L"/>
+                        <outlet property="thisTableView" destination="dn8-0S-yKm" id="hoi-7s-ZzE"/>
+                        <outlet property="thisToolBar" destination="D5U-q5-Ihj" id="CX3-38-5bD"/>
+                        <outlet property="thisView" destination="3lT-hO-aBz" id="xDL-Si-Qf1"/>
+                        <segue destination="dUB-0c-Dn8" kind="modal" identifier="ActionInfo" id="C2q-dr-qeG"/>
+                        <segue destination="IKt-0U-GH2" kind="modal" identifier="SceneInfo" id="4up-vf-bUq"/>
+                        <segue destination="UTE-yO-x1j" kind="modal" identifier="FoodInfo" id="yhe-o1-nIz"/>
+                        <segue destination="WGH-Ij-xt5" kind="modal" identifier="SelfInfo" id="gAz-W6-6D5"/>
+                        <segue destination="GQB-UM-SJT" kind="modal" identifier="DetailInfo" id="Dnt-vE-Uif"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kgg-JU-rps" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1633.5" y="296.5"/>
+        </scene>
+        <!--Self Info View Controller-->
+        <scene sceneID="AzY-cZ-yzY">
+            <objects>
+                <viewController id="WGH-Ij-xt5" customClass="SelfInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wua-3L-tyL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xvP-jg-FRK">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="資料搜尋" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CjG-MY-rci">
+                                <rect key="frame" x="0.0" y="40" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" placeholder="景點/餐廳/旅館/民宿/區域" id="EOL-u6-scV">
+                                <rect key="frame" x="0.0" y="60" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="WGH-Ij-xt5" id="KXp-qJ-xkD"/>
+                                </connections>
+                            </searchBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="qbn-N4-9fX">
+                                <rect key="frame" x="0.0" y="100" width="375" height="500"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="WGH-Ij-xt5" id="m2v-GJ-Vtd"/>
+                                </connections>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint:輸入關鍵字搜尋相關的地點 (景點, 餐廳, 旅館, 民宿或區域)。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="23E-3g-qjK">
+                                <rect key="frame" x="0.0" y="600" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="I24-1b-iXg">
+                                <rect key="frame" x="0.0" y="620" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="Home.png" width="50" style="plain" id="yac-hB-ee7">
+                                        <connections>
+                                            <action selector="bGotoAction_Action:" destination="WGH-Ij-xt5" id="KnC-Pz-Vga"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="1" image="Left Footprint.png" width="50" style="plain" id="tjC-hy-Kkt">
+                                        <connections>
+                                            <action selector="bGotoScence_Action:" destination="WGH-Ij-xt5" id="HBw-al-PCK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="2" image="Restaurant.png" width="50" style="plain" id="lwd-0W-j3m">
+                                        <connections>
+                                            <action selector="bGotoFood_Action:" destination="WGH-Ij-xt5" id="XKh-9K-bcW"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="3" image="Hotel.png" width="50" style="plain" id="Neg-Fc-xdQ">
+                                        <connections>
+                                            <action selector="bGotoHotel_Action:" destination="WGH-Ij-xt5" id="mGv-La-een"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="4" image="Search.png" width="50" style="plain" id="3ww-Jh-I3H">
+                                        <connections>
+                                            <action selector="bGotoSelf_Action:" destination="WGH-Ij-xt5" id="Jyx-mW-gaa"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="lHint" destination="23E-3g-qjK" id="MWb-QI-1up"/>
+                        <outlet property="lMainTitle" destination="CjG-MY-rci" id="JD5-jI-EQD"/>
+                        <outlet property="lwait" destination="xvP-jg-FRK" id="gzb-M0-E9u"/>
+                        <outlet property="thisMap" destination="qbn-N4-9fX" id="ZuL-bQ-511"/>
+                        <outlet property="thisSearchBar" destination="EOL-u6-scV" id="nUj-cW-rPI"/>
+                        <outlet property="thisToolBar" destination="I24-1b-iXg" id="AEE-LT-gCb"/>
+                        <outlet property="thisView" destination="wua-3L-tyL" id="Ubo-fJ-7cP"/>
+                        <segue destination="dUB-0c-Dn8" kind="modal" identifier="ActionInfo" id="63b-ek-j2X"/>
+                        <segue destination="IKt-0U-GH2" kind="modal" identifier="SceneInfo" id="PkK-HB-GlT"/>
+                        <segue destination="UTE-yO-x1j" kind="modal" identifier="FoodInfo" id="SlT-BL-Es5"/>
+                        <segue destination="CVV-HF-H8T" kind="modal" identifier="HotelInfo" id="8TJ-rZ-uXB"/>
+                        <segue destination="GQB-UM-SJT" kind="modal" identifier="DetailInfo" id="rAl-YV-Iw5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="64R-s4-Rqv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2036.5" y="296.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Facebook Filled.png" width="40" height="40"/>
+        <image name="Home.png" width="40" height="40"/>
+        <image name="Hotel.png" width="40" height="40"/>
+        <image name="Left Footprint.png" width="40" height="40"/>
+        <image name="Line.png" width="40" height="40"/>
+        <image name="Paper Plane.png" width="40" height="40"/>
+        <image name="Restaurant.png" width="40" height="40"/>
+        <image name="Search.png" width="40" height="40"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gAz-W6-6D5"/>
+        <segue reference="8TJ-rZ-uXB"/>
+        <segue reference="63b-ek-j2X"/>
+        <segue reference="SlT-BL-Es5"/>
+        <segue reference="PkK-HB-GlT"/>
+        <segue reference="rAl-YV-Iw5"/>
+    </inferredMetricsTieBreakers>
+</document>
