@@ -109,7 +109,6 @@
     CGFloat cellH = tableView.rowHeight / Line;
     CGFloat cellW = UI_SCREEN_W - cellH;
     [cell.textLabel setFrame:CGRectMake(0, 0, cellW, cellH)];
-    //cell.textLabel.frame = CGRectMake(0, 0, cellW, cellH);
     [Display setFontStyle:cell.textLabel and:NSTextAlignmentLeft];
     [cell.textLabel setFont:[UIFont fontWithName:Font_Helvetica size:FONTSIZE_20]];
 }

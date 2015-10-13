@@ -81,6 +81,9 @@
         NSDictionary *dItem = item;
         //NSLog(@"%@",dItem);
         
+        NSData *Star = [dItem valueForKey:@"星等"];
+        NSString *sStar = [NSString stringWithFormat:@"%@",Star];
+        
         NSData *Name = [dItem valueForKey:@"旅宿名稱"];
         NSString *sName = [NSString stringWithFormat:@"%@",Name];
         
@@ -88,7 +91,7 @@
         NSData *Tel = [dItem valueForKey:@"電話"];
         //NSString *sConnectMsg = [NSString stringWithFormat:@"電話:%@ 地址:%@",Tel,Address];
         
-        NSString *sHotelInfo = [NSString stringWithFormat:@"%@ 電話:%@\n地點:%@",sName, Tel, Address];
+        NSString *sHotelInfo = [NSString stringWithFormat:@"%@,%@ 電話:%@\n地點:%@",sStar, sName, Tel, Address];
         [tableArray addObject:sHotelInfo];
     }
     
@@ -105,7 +108,7 @@
         //NSString *sConnectMsg = [NSString stringWithFormat:@"電話:%@ 地址:%@",Tel,Address];
         
         NSString *sHotelInfo = [NSString stringWithFormat:@"%@ 電話:%@\n地點:%@",sName, Tel, Address];
-        [tableArray addObject:sHotelInfo];
+        [tableArray02 addObject:sHotelInfo];
     }
 }
 
@@ -141,20 +144,70 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    /*
+     NSString *sHotelInfo = [NSString stringWithFormat:@"(%@)%@ 電話:%@\n地點:%@",sStar, sName, Tel, Address];
+     */
     NSString *simpleTableIdentifier = sSimpleTableItem;
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     //cell.textLabel.lineBreakMode = NSLineBreakByCharWrapping;
     cell.textLabel.numberOfLines = 3;
+    [Display setTableCell:tableView and:cell and:cell.textLabel.numberOfLines];
+    CGFloat cell_H = cell.textLabel.frame.size.height * 3;
+    
     switch (indexPath.section)
     {
-        case 0:
-            cell.textLabel.text = [tableArray objectAtIndex:indexPath.row];
-            [Display setTableCell:tableView and:cell and:cell.textLabel.numberOfLines];
+        case 0: //旅館
+            {
+                NSArray *fSplit = [[tableArray objectAtIndex:indexPath.row] componentsSeparatedByString:@","];
+                NSString *sTitle = fSplit[1];
+                
+                UIButton *bStarButton =[UIButton buttonWithType:UIButtonTypeCustom];
+                bStarButton.frame = CGRectMake(2.0, 2.0, (cell_H - 4.0), (cell_H - 4.0));
+                NSString *sImage = @"3Star.png"; //4Star.png, 5Star.png
+                if([fSplit[0] isEqualToString:@"4星"])
+                {
+                    sImage = @"4Star.png";
+                }
+                else if([fSplit[0] isEqualToString:@"5星"])
+                {
+                    sImage = @"5Star.png";
+                }
+                [bStarButton setImage:[UIImage imageNamed:sImage] forState:UIControlStateNormal];
+                
+                [[bStarButton layer] setCornerRadius:10.0f];
+                [[bStarButton layer] setBorderWidth:1.0f];
+                [[bStarButton layer] setBorderColor:[UIColor lightGrayColor].CGColor];
+                [cell addSubview:bStarButton];
+                
+                UILabel *lContent = [[UILabel alloc]initWithFrame: CGRectMake(cell_H , 0.0, (UI_SCREEN_W - cell_H), cell_H)];
+                lContent.adjustsFontSizeToFitWidth = YES;
+                lContent.numberOfLines = 3;
+                lContent.text = sTitle;
+                [cell addSubview:lContent];
+                //cell.textLabel.text = [tableArray objectAtIndex:indexPath.row];
+            }
             break;
             
-        case 1:
-            cell.textLabel.text = [tableArray objectAtIndex:indexPath.row];
-            [Display setTableCell:tableView and:cell and:cell.textLabel.numberOfLines];
+        case 1: //民宿
+            {
+                //NSLog(@"cell_H %f",cell_H);
+                UIButton *bStarButton =[UIButton buttonWithType:UIButtonTypeCustom];
+                bStarButton.frame = CGRectMake(2.0, 2.0, (cell_H - 4.0), (cell_H - 4.0));
+                NSString *sImage = @"OtherHotel.png";
+                [bStarButton setImage:[UIImage imageNamed:sImage] forState:UIControlStateNormal];
+                
+                [[bStarButton layer] setCornerRadius:10.0f];
+                [[bStarButton layer] setBorderWidth:1.0f];
+                [[bStarButton layer] setBorderColor:[UIColor lightGrayColor].CGColor];
+                [cell addSubview:bStarButton];
+                
+                UILabel *lContent = [[UILabel alloc]initWithFrame: CGRectMake(cell_H , 0.0, (UI_SCREEN_W - cell_H), cell_H)];
+                lContent.adjustsFontSizeToFitWidth = YES;
+                lContent.numberOfLines = 3;
+                lContent.text = [tableArray02 objectAtIndex:indexPath.row];
+                [cell addSubview:lContent];
+                //cell.textLabel.text = [tableArray02 objectAtIndex:indexPath.row];
+            }
             break;
             
         default:
@@ -166,10 +219,35 @@
 //selected
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cellView = [tableView cellForRowAtIndexPath: indexPath];
-    NSArray *fSplit = [cellView.textLabel.text componentsSeparatedByString:@"\n"];
-    sSendName = fSplit[0];
+    //UITableViewCell *cellView = [tableView cellForRowAtIndexPath: indexPath];
+    //NSLog(@"section:%ld, %@",cellView.textLabel.text);
+    //NSArray *fSplit = [cellView.textLabel.text componentsSeparatedByString:@"\n"];
+    //sSendName = fSplit[0];
     
+    switch (indexPath.section)
+    {
+        case 0: //旅館
+            {
+                NSString *sContent = [tableArray objectAtIndex:indexPath.row];
+                NSArray *fSplit = [sContent componentsSeparatedByString:@","];
+                NSString *sTitle = fSplit[1];
+                
+                fSplit = [sTitle componentsSeparatedByString:@"\n"];
+                sSendName = fSplit[0];
+            }
+            break;
+            
+        case 1: //民宿
+            {
+                NSString *sContent = [tableArray02 objectAtIndex:indexPath.row];
+                NSArray *fSplit = [sContent componentsSeparatedByString:@"\n"];
+                sSendName = fSplit[0];
+            }
+            break;
+            
+        default:
+            break;
+    }
     [self performSegueWithIdentifier:sPage_DetailInfo sender:nil];
 }
 
