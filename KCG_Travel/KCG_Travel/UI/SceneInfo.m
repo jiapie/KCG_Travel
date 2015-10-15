@@ -55,7 +55,7 @@
     //View
     [Display setScreen:thisView];
     //MainTitle
-    [Display setMainTitle:lMainTitle and:NO];
+    [Display setMainTitle:lMainTitle];
     //MapView
     [Display setWorkArea:thisTableView and:NO];
     //[thisMap setHidden:YES];
@@ -87,7 +87,7 @@
         NSData *Opentime = [dItem valueForKey:@"Opentime"];
         NSString *sOpentime = [NSString stringWithFormat:@"%@",Opentime];
         
-        NSString *sSceneInfo = [NSString stringWithFormat:@"%@ 電話:%@\n地點:%@\n開放時間:%@",sName, Tel, Address, sOpentime];
+        NSString *sSceneInfo = [NSString stringWithFormat:@"%@\n電話:%@\n地址:%@\n開放時間:%@",sName, Tel, Address, sOpentime];
         [tableArray addObject:sSceneInfo];
     }
 }
@@ -107,7 +107,7 @@
     NSString *simpleTableIdentifier = sSimpleTableItem;
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     //cell.textLabel.lineBreakMode = NSLineBreakByCharWrapping;
-    cell.textLabel.numberOfLines = 3;
+    cell.textLabel.numberOfLines = 4;
     cell.textLabel.text = [tableArray objectAtIndex:indexPath.row];
     [Display setTableCell:tableView and:cell and:cell.textLabel.numberOfLines];
     

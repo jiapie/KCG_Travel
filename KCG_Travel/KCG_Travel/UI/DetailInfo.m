@@ -61,7 +61,7 @@
     //View
     [Display setScreen:thisView];
     //MainTitle
-    [Display setMainTitle:lMainTitle and:NO];
+    [Display setMainTitle:lMainTitle];
     [Display setSubToolBar:subToolBar];
     //MapView
     [Display setWorkArea:thisTableView and:YES];
@@ -413,6 +413,77 @@
     }
 }
 
+-(void) showMRTInfo
+{
+    //NSLog(@"sSendName:%@",sSendName);
+    
+    tableDisplayArray = [[NSMutableArray alloc]init];
+    NSString *sPath = [[NSBundle mainBundle] bundlePath];
+    NSString *sFile = [sPath stringByAppendingPathComponent:sFile_MRTData];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    if([fm fileExistsAtPath:sFile] == YES)
+    {
+        NSFileHandle *handle01 = [NSFileHandle fileHandleForReadingAtPath:sFile];
+        NSData *sAllData = [[NSData alloc]initWithData:[handle01 readDataToEndOfFile]];
+        NSArray *aMRTInfo = [NSArray arrayWithJSONData:sAllData];
+        //NSLog(@"aMRTInfo:%@",aMRTInfo);
+        
+        for(id item in aMRTInfo)
+        {
+            NSDictionary *dItem = item;
+            
+            NSData *dNo = [dItem valueForKey:@"車站編號"];
+            NSString *sDNo = [NSString stringWithFormat:@"(%@)",dNo];
+            sDNo = [sDNo stringByReplacingOccurrencesOfString:@" " withString:@""];
+            //NSLog(@"sDNo:%@",sDNo);
+            
+            if([sDNo isEqualToString:sSendName])
+            {//名稱,時間,電話,地址,敘述
+                
+                NSData *cName = [dItem valueForKey:@"車站中文名稱"];
+                NSString *sCName = [NSString stringWithFormat:@"%@",cName];
+                sCName = [sCName stringByReplacingOccurrencesOfString:@" " withString:@""];
+                
+                NSData *eName = [dItem valueForKey:@"車站英文名稱"];
+                NSString *sEName = [NSString stringWithFormat:@"%@",eName];
+                sEName = [sEName stringByReplacingOccurrencesOfString:@" " withString:@""];
+                NSString *title = [NSString stringWithFormat:@"%@ %@ (%@)",sDNo,sCName,sEName];
+                //名稱
+                [tableDisplayArray addObject:title];
+                
+                //時間
+                [tableDisplayArray addObject:@"---"];
+                
+                //電話
+                [tableDisplayArray addObject:@"---"];
+                
+                //地址
+                [tableDisplayArray addObject:@"---"];
+                
+                //敘述
+                [tableDisplayArray addObject:@"---"];
+                
+                //經度
+                NSData *Longitude = [dItem valueForKey:@"車站經度"];
+                NSString *sLongitude = [NSString stringWithFormat:@"%@",Longitude];
+                double dbLongitude = [sLongitude doubleValue];
+                //緯度
+                NSData *Latitude = [dItem valueForKey:@"車站緯度"];
+                NSString *sLatitude = [NSString stringWithFormat:@"%@",Latitude];
+                double dbLatitude = [sLatitude doubleValue];
+                
+                CLLocationCoordinate2D naviCoord = CLLocationCoordinate2DMake(dbLatitude,dbLongitude);
+                
+                point = [[MKPointAnnotation alloc] init];
+                point.title = title;
+                //point.subtitle = subtitle;
+                point.coordinate = naviCoord;
+                break;
+            }
+        }
+    }
+}
+
 -(void)showDetailData
 {
     NSString *sFrom = [global.dGlobal valueForKey:sGlobal_from];
@@ -466,6 +537,15 @@
             lMainTitle.text = @"旅館/民宿資料";
             sSendName = fSplit[1];
             [self showHotelInfo];
+        }
+        
+        //捷運
+        rSearchResult1 = [sSendName rangeOfString:sTypeMRT];
+        if((rSearchResult1.location != NSNotFound))
+        {
+            lMainTitle.text = @"捷運資料";
+            sSendName = fSplit[1];
+            [self showMRTInfo];
         }
     }
 }
@@ -567,19 +647,6 @@
     {
         bLocation = NO;
     }
-    /*
-    else
-    {//無法確認目前位置
-        //Taiwan Center
-        MKCoordinateRegion region = {KcgSiWei, NearbyMap};
-        [thisMap setRegion:region animated:YES];
-        
-        if(sender != nil)
-        {
-            [MessageBox showWarningMsg:sErrorTitle and:sGetUserLocationError];
-        }
-    }
-    */
 }
 
 -(IBAction)bNavigation_Action:(id)sender
@@ -594,8 +661,8 @@
         MKPlacemark *mark = [[MKPlacemark alloc] initWithCoordinate:point.coordinate addressDictionary:nil];
         MKMapItem *setDestPoint = [[MKMapItem alloc] initWithPlacemark:mark];
         // 設定大頭針上的標籤資訊
-        setDestPoint.name = @"目的地"; //Nowpoint.title;
-    
+        setDestPoint.name = point.title;    //@"目的地";
+        
         // 取得起點位置
         // 根據起點座標設定一個大頭針標示
         double dbLatitude = self.locationManager.location.coordinate.latitude;

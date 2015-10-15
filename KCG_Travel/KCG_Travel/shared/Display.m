@@ -71,23 +71,25 @@
         //CGFloat fontsize = FONTSIZE_22;
         UILabel *thisLabel = (UILabel *)thisObject;
         
+        /*
         CGFloat fFont = [self getFontSize];
         if((thisLabel.frame.size.width / thisLabel.text.length) < [self getFontSize])
         {
             fFont = FONTSIZE_14;
             //fFont = FONTSIZE_20;
         }
-        
-        [thisLabel setFont:[UIFont fontWithName:Font_Helvetica size:fFont]];
-        thisLabel.adjustsFontSizeToFitWidth = YES;
+        */
+        [thisLabel setFont:[UIFont fontWithName:Font_Helvetica size:FONTSIZE_18]];
+        //thisLabel.adjustsFontSizeToFitWidth = YES;
         thisLabel.contentMode = UIControlContentVerticalAlignmentCenter;
         thisLabel.textAlignment = type;
     }
     else if ([thisObject isKindOfClass:[UITextField class]])
     {
         UITextField *thisField = (UITextField *)thisObject;
-        [thisField setFont:[UIFont fontWithName:Font_Helvetica size:[self getFontSize]]];
-        thisField.adjustsFontSizeToFitWidth = YES;
+        //[thisField setFont:[UIFont fontWithName:Font_Helvetica size:[self getFontSize]]];
+        [thisField setFont:[UIFont fontWithName:Font_Helvetica size:FONTSIZE_18]];
+        //thisField.adjustsFontSizeToFitWidth = YES;
         thisField.contentMode = UIControlContentVerticalAlignmentCenter;
         thisField.textAlignment = type;
     }
@@ -119,22 +121,26 @@
     //NSLog(@"%f,%f",UI_SCREEN_W,UI_SCREEN_H);
 }
 
-+(void)setMainTitle:(id)MainTitle and:(BOOL)bBack
++(void)setMainTitle:(id)MainTitle
 {
     CGFloat W = UI_SCREEN_W;
     CGFloat H = MainMenuBarH;
     CGFloat X = 0;
     CGFloat Y = StartTopH ;
 
-    if(bBack == YES)
-    {
-        W = (UI_SCREEN_W - MainMenuBarH);
-        //H = MainMenuBarH;
-        X = MainMenuBarH;
-        //Y = StartTopH ;
-    }
-
     [MainTitle setFrame:CGRectMake(X, Y, W, H)];
+}
+
++(void)setMainTitleButton:(id)thisButton and:(BOOL)bFirst
+{
+    CGFloat W = MainMenuBarH;
+    CGFloat H = MainMenuBarH;
+    CGFloat X = 0;
+    if(bFirst == NO)
+        X = UI_SCREEN_W - MainMenuBarH;
+    CGFloat Y = StartTopH ;
+    
+    [thisButton setFrame:CGRectMake(X, Y, W, H)];
 }
 
 +(void)setBackButton:(UIButton*)thisButton
@@ -275,5 +281,39 @@
         
         thisToolBar.items[i].width = W;
     }
+}
+
++(void) setSubScreen:(id)thisView
+{
+    CGFloat H = 170.0;
+    [thisView setFrame:CGRectMake(0, 0-H, UI_SCREEN_W, H)];
+    //NSLog(@"%f,%f",UI_SCREEN_W,UI_SCREEN_H);
+}
+
++(void) setSubLabel:(id)thisLabel and:(NSInteger)iIndex
+{
+    CGFloat labelW = 40.0;
+    CGFloat labelX = 10.0;
+    CGFloat labelY = 40.0 + 40.0 * iIndex;
+    CGFloat labelH = 30.0;
+    
+    [thisLabel setFrame:CGRectMake(labelX,labelY,labelW,labelH)];
+}
+
++(void) setSubButton:(id)thisButton and:(NSInteger)iIndex
+{
+    //60,70.300,30    
+    CGFloat buttonW = UI_SCREEN_W - 10.0 - 60.0;
+    CGFloat buttonX = 60.0;
+    CGFloat buttonY = 40.0 + 40.0 * iIndex;
+    CGFloat buttonH = 30.0;
+    
+    [thisButton setFrame:CGRectMake(buttonX,buttonY,buttonW,buttonH)];
+}
+
++(void) setTableView:(id)thisTableView
+{
+    CGFloat H = 170.0;
+    [thisTableView setFrame:CGRectMake(0, (StartTopH + MainMenuBarH + H) , UI_SCREEN_W, H)];
 }
 @end

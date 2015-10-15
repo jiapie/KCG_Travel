@@ -57,7 +57,9 @@
     //View
     [Display setScreen:thisView];
     //MainTitle
-    [Display setMainTitle:lMainTitle and:NO];
+    [Display setMainTitle:lMainTitle];
+    [Display setMainTitleButton:bHotel01 and:YES];
+    [Display setMainTitleButton:bHotel02 and:NO];
     //MapView
     [Display setWorkArea:thisTableView and:NO];
     //[thisMap setHidden:YES];
@@ -91,7 +93,7 @@
         NSData *Tel = [dItem valueForKey:@"電話"];
         //NSString *sConnectMsg = [NSString stringWithFormat:@"電話:%@ 地址:%@",Tel,Address];
         
-        NSString *sHotelInfo = [NSString stringWithFormat:@"%@,%@ 電話:%@\n地點:%@",sStar, sName, Tel, Address];
+        NSString *sHotelInfo = [NSString stringWithFormat:@"%@,%@\n電話:%@\n地址:%@",sStar, sName, Tel, Address];
         [tableArray addObject:sHotelInfo];
     }
     
@@ -107,9 +109,11 @@
         NSData *Tel = [dItem valueForKey:@"電話"];
         //NSString *sConnectMsg = [NSString stringWithFormat:@"電話:%@ 地址:%@",Tel,Address];
         
-        NSString *sHotelInfo = [NSString stringWithFormat:@"%@ 電話:%@\n地點:%@",sName, Tel, Address];
+        NSString *sHotelInfo = [NSString stringWithFormat:@"%@\n電話:%@\n地址:%@",sName, Tel, Address];
         [tableArray02 addObject:sHotelInfo];
     }
+    
+    [thisTableView reloadData];
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
@@ -144,15 +148,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-     NSString *sHotelInfo = [NSString stringWithFormat:@"(%@)%@ 電話:%@\n地點:%@",sStar, sName, Tel, Address];
-     */
     NSString *simpleTableIdentifier = sSimpleTableItem;
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     //cell.textLabel.lineBreakMode = NSLineBreakByCharWrapping;
-    cell.textLabel.numberOfLines = 3;
+    cell.textLabel.numberOfLines = 4;
     [Display setTableCell:tableView and:cell and:cell.textLabel.numberOfLines];
-    CGFloat cell_H = cell.textLabel.frame.size.height * 3;
+    CGFloat cell_H = cell.textLabel.frame.size.height * 4;
     
     switch (indexPath.section)
     {
@@ -180,7 +181,7 @@
                 [cell addSubview:bStarButton];
                 
                 UILabel *lContent = [[UILabel alloc]initWithFrame: CGRectMake(cell_H , 0.0, (UI_SCREEN_W - cell_H), cell_H)];
-                lContent.adjustsFontSizeToFitWidth = YES;
+                //lContent.adjustsFontSizeToFitWidth = YES;
                 lContent.numberOfLines = 3;
                 lContent.text = sTitle;
                 [cell addSubview:lContent];
@@ -202,7 +203,7 @@
                 [cell addSubview:bStarButton];
                 
                 UILabel *lContent = [[UILabel alloc]initWithFrame: CGRectMake(cell_H , 0.0, (UI_SCREEN_W - cell_H), cell_H)];
-                lContent.adjustsFontSizeToFitWidth = YES;
+                //lContent.adjustsFontSizeToFitWidth = YES;
                 lContent.numberOfLines = 3;
                 lContent.text = [tableArray02 objectAtIndex:indexPath.row];
                 [cell addSubview:lContent];
@@ -276,4 +277,21 @@
     [self performSegueWithIdentifier:sPage_SelfInfo sender:nil];
 }
 
+-(IBAction)bHotel01_Action:(id)sender
+{
+    [self showHotelInfo];
+    
+    tableTitleArray = [[NSArray alloc]initWithObjects:@"一般旅館", @"", nil];
+    tableArray02 = [[NSMutableArray alloc]init];
+    [thisTableView reloadData];
+}
+
+-(IBAction)bHotel02_Action:(id)sender
+{
+    [self showHotelInfo];
+    
+    tableTitleArray = [[NSArray alloc]initWithObjects:@"", @"民宿", nil];
+    tableArray = [[NSMutableArray alloc]init];
+    [thisTableView reloadData];
+}
 @end

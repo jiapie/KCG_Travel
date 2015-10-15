@@ -15,11 +15,21 @@
     IBOutlet UIView         *thisView;
     IBOutlet UILabel        *lwait;
     IBOutlet UILabel        *lMainTitle;
+    IBOutlet UIButton       *bMenu;
+    IBOutlet UIButton       *bAim;
     IBOutlet UISearchBar    *thisSearchBar;
     IBOutlet MKMapView      *thisMap;
     IBOutlet UILabel        *lHint;
     IBOutlet UIToolbar      *thisToolBar;
-    
+    //SubMenu
+    IBOutlet UIView         *settingsView;
+    IBOutlet UILabel        *lLocation01;
+    IBOutlet UILabel        *lLocation02;
+    IBOutlet UILabel        *lType;
+    IBOutlet UISegmentedControl  *segmented01;
+    IBOutlet UIButton       *bChooseLocation;
+    IBOutlet UISegmentedControl  *segmented02;
+    IBOutlet UITableView    *thisTableView;
     //Event
     UITapGestureRecognizer  *singleTap;
     NSString                *sSendName;
@@ -28,6 +38,7 @@
     Global                  *global;
     NSMutableArray          *allPoint;
     NSMutableArray          *allPointXY;
+    NSArray                 *tableArray;
 }
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -37,5 +48,9 @@
 -(IBAction)bGotoFood_Action:(id)sender;
 -(IBAction)bGotoHotel_Action:(id)sender;
 -(IBAction)bGotoSelf_Action:(id)sender;
+
+-(IBAction)bMenu_Action:(id)sender;
+-(IBAction)bAim_Action:(id)sender;
+-(IBAction)bChooseLocation_Action:(id)sender;
 @end
 

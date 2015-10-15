@@ -29,10 +29,13 @@
 {
     [super viewDidLoad];
     [self DisplayScreen];
-    //[self setAllPoint:@""];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self performSelectorOnMainThread:@selector(setAllPoint:) withObject:@"" waitUntilDone:YES];
     });
+    
+    //NOW
+    [self bAim_Action:nil];
     
     // Do any additional setup after loading the view, typically from a nib.
     self.locationManager = [[CLLocationManager alloc] init];
@@ -51,10 +54,15 @@
     [thisMap setZoomEnabled:YES];
     [thisMap setScrollEnabled:YES];
     
-    [self bAim_Action:nil];
-
     singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [thisMap addGestureRecognizer:singleTap];
+    
+    tableArray = [[NSArray alloc]initWithObjects:@"楠梓區", @"左營區", @"鼓山區", @"三民區", @"鹽埕區", @"前金區", @"新興區", @"苓雅區", @"前鎮區", @"旗津區", @"小港區", @"鳳山區", @"大寮區", @"鳥松區", @"林園區", @"仁武區", @"大樹區", @"大社區", @"岡山區", @"路竹區", @"橋頭區", @"梓官區", @"彌陀區", @"永安區", @"燕巢區", @"田寮區", @"阿蓮區", @"茄萣區", @"湖內區", @"旗山區", @"美濃區", @"內門區", @"杉林區", @"甲仙區", @"六龜區", @"茂林區", @"桃源區", @"那瑪夏區", nil];
+    
+    //設定所觸發的事件條件與對應事件
+    [segmented01 addTarget:self action:@selector(segmented01ControlIndexChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    [segmented02 addTarget:self action:@selector(segmented02ControlIndexChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -95,12 +103,51 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [tableArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *simpleTableIdentifier = sSimpleTableItem;
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    //cell.textLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    cell.textLabel.numberOfLines = 1;
+    cell.textLabel.text = [tableArray objectAtIndex:indexPath.row];
+    [Display setTableCell:tableView and:cell and:cell.textLabel.numberOfLines];
+    
+    return cell;
+}
+
+//selected
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cellView = [tableView cellForRowAtIndexPath: indexPath];
+    [bChooseLocation setTitle:cellView.textLabel.text forState:UIControlStateNormal];
+    //+(MKPointAnnotation *) getAddressLatLng:(NSString *)sAddress;
+
+    NSString *sAddress = [NSString stringWithFormat:@"高雄市%@",cellView.textLabel.text];
+    MKPointAnnotation *point = [Global getAddressLatLng:sAddress];
+    MKCoordinateRegion region = {point.coordinate ,NearbyMap};
+    [thisMap setRegion:region animated:YES];
+
+    [thisTableView setHidden:YES];
+}
+
 -(void)DisplayScreen
 {
     //View
     [Display setScreen:thisView];
     //MainTitle
-    [Display setMainTitle:lMainTitle and:NO];
+    [Display setMainTitle:lMainTitle];
+    [Display setMainTitleButton:bMenu and:YES];
+    [Display setMainTitleButton:bAim and:NO];
     //SearchBar
     [Display setSearchBar:thisSearchBar];
     //MapView
@@ -110,14 +157,30 @@
     [Display setHintBar:lHint];
     //SystemButton
     [Display setToolBar:thisToolBar];
+    
+    //SubScreen
+    [Display setSubScreen:settingsView];
+    [Display setSubLabel:lLocation01 and:0];
+    [Display setSubButton:segmented01 and:0];    
+    [Display setSubLabel:lLocation02 and:1];
+    [Display setSubButton:bChooseLocation and:1];
+    [bChooseLocation setEnabled:NO];
+    [Display setSubLabel:lType and:2];
+    [Display setSubButton:segmented02 and:2];
+    
+    [Display setTableView:thisTableView];
+    [thisTableView setHidden:YES];
 }
 
 -(void) setAllPoint:(NSString *)sSearch
 {
+    //NSLog(@"setAllPoint search:%@",sSearch);
+    
     allPoint        = [[NSMutableArray alloc]init];
     allPointXY      = [[NSMutableArray alloc]init];
     
     //NSLog(@"sSearch:%@",sSearch);
+    [self showMRT:sSearch];
     [self showSceneInfo:sSearch];
     [self showFoodInfo:sSearch];
     [self showHotelInfo:sSearch];
@@ -125,8 +188,61 @@
     [thisMap addAnnotations:allPoint];
 }
 
+-(void)showMRT:(NSString *)sSearch
+{
+    //NSLog(@"showMRT");
+    
+    NSString *sPath = [[NSBundle mainBundle] bundlePath];
+    NSString *sFile = [sPath stringByAppendingPathComponent:@"MRT.json"];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    if([fm fileExistsAtPath:sFile] == YES)
+    {
+        NSFileHandle *handle01 = [NSFileHandle fileHandleForReadingAtPath:sFile];
+        NSData *sAllData = [[NSData alloc]initWithData:[handle01 readDataToEndOfFile]];
+        NSArray *aMRTInfo = [NSArray arrayWithJSONData:sAllData];
+        //NSLog(@"aMRTInfo:%@",aMRTInfo);
+        
+        for(id item in aMRTInfo)
+        {
+            NSDictionary *dItem = item;
+            
+            NSData *dNo = [dItem valueForKey:@"車站編號"];
+            NSString *sDNo = [NSString stringWithFormat:@"%@",dNo];
+            sDNo = [sDNo stringByReplacingOccurrencesOfString:@" " withString:@""];
+            
+            NSData *cName = [dItem valueForKey:@"車站中文名稱"];
+            NSString *sCName = [NSString stringWithFormat:@"%@",cName];
+            sCName = [sCName stringByReplacingOccurrencesOfString:@" " withString:@""];
+            
+            NSData *eName = [dItem valueForKey:@"車站英文名稱"];
+            NSString *sEName = [NSString stringWithFormat:@"%@",eName];
+            sEName = [sEName stringByReplacingOccurrencesOfString:@" " withString:@""];
+            
+            //經度
+            NSData *Longitude = [dItem valueForKey:@"車站經度"];
+            NSString *sLongitude = [NSString stringWithFormat:@"%@",Longitude];
+            double dbLongitude = [sLongitude doubleValue];
+            //緯度
+            NSData *Latitude = [dItem valueForKey:@"車站緯度"];
+            NSString *sLatitude = [NSString stringWithFormat:@"%@",Latitude];
+            double dbLatitude = [sLatitude doubleValue];
+            
+            CLLocationCoordinate2D naviCoord = CLLocationCoordinate2DMake(dbLatitude,dbLongitude);
+            
+            NSString *title = [[NSString alloc]initWithFormat:@"[捷運] (%@) %@ %@",sDNo, sCName, sEName];;
+            MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+            point.title = title;
+            point.coordinate = naviCoord;
+            
+            [allPoint addObject:point];
+        }
+    }
+}
+
 -(void)showSceneInfo:(NSString *)sSearch
 {
+    //NSLog(@"showSceneInfo");
+    
     NSArray *aSceneInfo = [global.dGlobal valueForKey:sJson_Scence];
     //NSLog(@"Count:%ld",aSceneInfo.count);
     
@@ -169,7 +285,6 @@
         NSRange rSearchResult2 = [subtitle rangeOfString:sSearch];
         if((rSearchResult1.location != NSNotFound)||(rSearchResult2.location != NSNotFound)||(bCheck == YES))
         {
-            //NSLog(@"add 1:%ld,2:%ld,3:%ld",rSearchResult1.location,rSearchResult2.location,bCheck);
             [allPoint addObject:point];
         }
     }
@@ -332,43 +447,57 @@
         annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:sAnnotationViewReuseIdentifier];
     }
     
-    //地點 (景點,餐廳, 旅館, 民宿)
+    //地點 (景點,餐廳, 旅館, 民宿, 捷運)
     if([[annotation title] isEqualToString:sCurrentLocation])
     {//不換 (原點)
         annotationView = nil;
     }
     else
     {
+        //景點
         NSRange searchResult = [[annotation title] rangeOfString:sTypeScene];
         if(searchResult.location != NSNotFound)
         {
             annotationView.image = [UIImage imageNamed:sPicScence];
         }
-        else
+        
+        //餐廳
+        searchResult = [[annotation title] rangeOfString:sTypeFood];
+        if(searchResult.location != NSNotFound)
         {
-            searchResult = [[annotation title] rangeOfString:sTypeFood];
-            if(searchResult.location != NSNotFound)
+            annotationView.image = [UIImage imageNamed:sPicFood];
+        }
+        
+        //旅館
+        searchResult = [[annotation title] rangeOfString:sTypeHotel01];
+        if(searchResult.location != NSNotFound)
+        {
+            annotationView.image = [UIImage imageNamed:sPicHotel01];
+        }
+        
+        //民宿
+        searchResult = [[annotation title] rangeOfString:sTypeHotel02];
+        if(searchResult.location != NSNotFound)
+        {
+            annotationView.image = [UIImage imageNamed:sPicHotel02];
+        }
+        
+        //捷運
+        searchResult = [[annotation title] rangeOfString:sTypeMRT];
+        if(searchResult.location != NSNotFound)
+        {
+            NSRange searchColor = [[annotation title] rangeOfString:@"R"];
+            if(searchColor.location != NSNotFound)
             {
-                annotationView.image = [UIImage imageNamed:sPicFood];
+                annotationView.image = [UIImage imageNamed:sPicMRTR];
             }
             else
             {
-                searchResult = [[annotation title] rangeOfString:sTypeHotel01];
-                if(searchResult.location != NSNotFound)
-                {
-                    annotationView.image = [UIImage imageNamed:sPicHotel01];
-                }
-                else
-                {
-                    searchResult = [[annotation title] rangeOfString:sTypeHotel02];
-                    if(searchResult.location != NSNotFound)
-                    {
-                        annotationView.image = [UIImage imageNamed:sPicHotel02];
-                    }
-                }
+                annotationView.image = [UIImage imageNamed:sPicMRTO];
             }
         }
     }
+    
     annotationView.annotation = annotation;
     // add below line of code to enable selection on annotation view
     annotationView.canShowCallout = YES;
@@ -401,6 +530,28 @@
     //[self performSelector:@selector(setAllPoint:) withObject:searchBar.text];
 }
 
+-(IBAction)bMenu_Action:(id)sender
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3]; // if you want to slide up the view
+    
+    CGRect rect = settingsView.frame;
+    //NSLog(@"x:%f,y:%f,w:%f,h:%f",vButtonView.frame.origin.x,vButtonView.frame.origin.y,vButtonView.frame.size.width,vButtonView.frame.size.height);
+    
+    if (rect.origin.y <0)
+    {//Show
+        //NSLog(@"Show");
+        rect.origin.y = StartTopH + MainMenuBarH;        
+    }
+    else //if (rect.origin.y >= 0)
+    {//Hide
+        //NSLog(@"Hide");
+        rect.origin.y = 0 - rect.size.height;
+    }
+    settingsView.frame = rect;
+    [UIView commitAnimations];
+}
+
 -(IBAction)bAim_Action:(id)sender
 {
     double dbLatitude = self.locationManager.location.coordinate.latitude;
@@ -408,7 +559,6 @@
     
     if((dbLatitude != 0) && (dbLongitude != 0))
     {
-        //bLocation = true;
         MKCoordinateRegion region = {self.locationManager.location.coordinate,NearbyMap};
         [thisMap setRegion:region animated:YES];
     }
@@ -423,6 +573,148 @@
             [MessageBox showWarningMsg:sErrorTitle and:sGetUserLocationError];
         }
     }
+}
+
+-(IBAction)bChooseLocation_Action:(id)sender
+{
+    if(thisTableView.hidden == YES)
+    {
+        [thisTableView setHidden:NO];
+    }
+    else
+    {
+        [thisTableView setHidden:YES];
+    }
+}
+
+- (void)segmented01ControlIndexChanged:(id)sender
+{
+    //NSLog(@"title:%@",[sender title]);
+    //NSLog(@"segmented01ControlIndexChanged %@", [sender titleForSegmentAtIndex:[sender selectedSegmentIndex]]);
+    
+    [bChooseLocation setEnabled:NO];
+    [thisTableView setHidden:YES];
+    
+    /*
+    NSArray *pointsArray = [thisMap annotations];
+    [thisMap removeAnnotations:pointsArray];
+    [allPoint removeAllObjects];
+    */
+    
+    switch ([sender selectedSegmentIndex])
+    {
+        case 0: //所在位置
+            [self bAim_Action:nil];
+            break;
+
+        case 1: //最近捷運站
+            {
+                double dbLatitude = self.locationManager.location.coordinate.latitude;
+                double dbLongitude = self.locationManager.location.coordinate.longitude;
+                if((dbLatitude != 0) && (dbLongitude != 0))
+                {
+                    MKCoordinateRegion region = {self.locationManager.location.coordinate,NearbyMap};
+                    //[thisMap setRegion:region animated:YES];
+                    
+                    CLLocationCoordinate2D touchCoordinate = region.center;
+                    NSInteger iNear = [self CalDistanceFromMRT:touchCoordinate];
+                    if(iNear >=0)
+                    {
+                        MKPointAnnotation *sendPoint = allPoint[iNear];
+                        MKCoordinateRegion region = {sendPoint.coordinate, NearbyMap};
+                        [thisMap setRegion:region animated:YES];
+                    }
+                }
+                else
+                {
+                    //Taiwan Center
+                    MKCoordinateRegion region = {KcgSiWei, NearbyMap};
+                    
+                    CLLocationCoordinate2D touchCoordinate = region.center;
+                    NSInteger iNear = [self CalDistanceFromMRT:touchCoordinate];
+                    if(iNear >=0)
+                    {
+                        MKPointAnnotation *sendPoint = allPoint[iNear];
+                        MKCoordinateRegion region = {sendPoint.coordinate, NearbyMap};
+                        [thisMap setRegion:region animated:YES];
+                    }
+                    
+                }
+            }
+            break;
+            
+        case 2: //行政區
+            [bChooseLocation setEnabled:YES];
+            break;
+    
+        default:
+            break;
+    }
+}
+
+- (void)segmented02ControlIndexChanged:(id)sender
+{
+    //NSLog(@"title:%@",[sender title]);
+    //NSLog(@"segmented02ControlIndexChanged %@", [sender titleForSegmentAtIndex:[sender selectedSegmentIndex]]);
+    
+    NSString *sSearch = [sender titleForSegmentAtIndex:[sender selectedSegmentIndex]];
+    [thisTableView setHidden:YES];
+    NSArray *pointsArray = [thisMap annotations];
+    [thisMap removeAnnotations:pointsArray];
+    [allPoint removeAllObjects];
+    
+     switch ([sender selectedSegmentIndex])
+     {//地點 (景點,餐廳, 旅館, 民宿)
+         case 0: //景點
+         case 1: //餐廳
+         case 2: //旅館
+         case 3: //民宿
+             {
+                dispatch_async(dispatch_get_main_queue(), ^{[self performSelectorOnMainThread:@selector(setAllPoint:) withObject:sSearch waitUntilDone:YES];
+                });
+             }
+             break;
+             
+         default:
+             break;
+     }
+}
+
+-(NSInteger) CalDistanceFromMRT:(CLLocationCoordinate2D)gotoPoint
+{
+    NSInteger iNear = -1;
+    double    dbshortdistance = 0;
+    
+    for(NSInteger i=0;i<allPoint.count;i++)
+    {
+        MKPointAnnotation *thisPoint = allPoint[i];
+        
+        NSRange rSearchResult1 = [thisPoint.title rangeOfString:sTypeMRT];
+        if(rSearchResult1.location != NSNotFound)
+        {
+            //NSLog(@"Cal %@",thisPoint.title);
+            //經度
+            double dbLongitude = thisPoint.coordinate.longitude;
+            //緯度
+            double dbLatitude = thisPoint.coordinate.latitude;
+        
+            double Location_latitude  = gotoPoint.latitude;
+            double Location_longitude = gotoPoint.longitude;
+            double distance = [Global distanceBetweenOrderBy:Location_latitude:dbLatitude :Location_longitude:dbLongitude];
+        
+            if((i == 0) || (distance < dbshortdistance))
+            {
+                dbshortdistance = distance;
+                iNear = i;
+            }
+        }
+    }
+    
+    if(dbshortdistance > dbShortDistance)
+    {
+        iNear = -1;
+    }
+    return  iNear;
 }
 
 -(NSInteger) CalDistance:(CLLocationCoordinate2D)gotoPoint

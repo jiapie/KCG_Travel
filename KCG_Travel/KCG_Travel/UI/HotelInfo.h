@@ -14,6 +14,8 @@
     IBOutlet UIView         *thisView;
     IBOutlet UILabel        *lwait;
     IBOutlet UILabel        *lMainTitle;
+    IBOutlet UIButton       *bHotel01;      //旅館
+    IBOutlet UIButton       *bHotel02;      //民宿
     IBOutlet UITableView    *thisTableView;
     IBOutlet UILabel        *lHint;
     IBOutlet UIToolbar      *thisToolBar;
@@ -31,4 +33,7 @@
 -(IBAction)bGotoFood_Action:(id)sender;
 -(IBAction)bGotoHotel_Action:(id)sender;
 -(IBAction)bGotoSelf_Action:(id)sender;
+
+-(IBAction)bHotel01_Action:(id)sender;
+-(IBAction)bHotel02_Action:(id)sender;
 @end

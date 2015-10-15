@@ -34,6 +34,7 @@
 
 #define UI_SCREEN_H [[UIScreen mainScreen] bounds].size.height
 #define UI_SCREEN_W [[UIScreen mainScreen] bounds].size.width
+static NSString *sFile_MRTData                      = @"MRT.json";
 //頁面切換
 static NSString *sPage_MainMenu                     = @"MainMenu";
 static NSString *sPage_ActionInfo                   = @"ActionInfo";
@@ -58,6 +59,9 @@ static NSString *sPicScence     = @"Marker_Footprint.png";
 static NSString *sPicFood       = @"Marker_Restaurant.png";
 static NSString *sPicHotel01    = @"Marker_Hotel01.png";
 static NSString *sPicHotel02    = @"Marker_Hotel02.png";
+static NSString *sPicMRTR       = @"MRT_R.png";
+static NSString *sPicMRTO       = @"MRT_O.png";
+
 //URL
 //活動資料
 static NSString *sGetActionInfoURL    = @"http://data.kaohsiung.gov.tw/Opendata/DownLoad.aspx?Type=2&CaseNo1=AV&CaseNo2=3&FileType=1&Lang=C&FolderType=O";
@@ -80,6 +84,7 @@ static NSString *sTypeScene         = @"景點";
 static NSString *sTypeFood          = @"餐廳";
 static NSString *sTypeHotel01       = @"旅館";
 static NSString *sTypeHotel02       = @"民宿";
+static NSString *sTypeMRT           = @"捷運";
 
 //Json
 static NSString *sJson_Action       = @"Action";

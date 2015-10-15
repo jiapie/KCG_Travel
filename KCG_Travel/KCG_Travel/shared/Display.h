@@ -47,7 +47,8 @@ static NSString *Font_Helvetica = @"Helvetica";
 +(void) setFontStyle:(id)thisObject and:(enum NSTextAlignment)type;
 +(void) setTableCell:(UITableView *)tableView and:(UITableViewCell *)cell and:(NSInteger)Line;
 //MainTitle
-+(void) setMainTitle:(id)MainTitle and:(BOOL)bBack;
++(void)setMainTitle:(id)MainTitle;
++(void)setMainTitleButton:(id)thisButton and:(BOOL)bFirst;
 +(void) setBackButton:(UIButton*)thisButton;
 //SearchBar
 +(void) setSearchBar:(UISearchBar *)thisSearchBar;
@@ -59,5 +60,10 @@ static NSString *Font_Helvetica = @"Helvetica";
 //+(void) setSystemButton:(UIButton*)thisButton and:(NSInteger)iIndex and:(BOOL)bHidden;
 +(void) setToolBar:(UIToolbar *)thisToolBar;
 +(void) setSubToolBar:(UIToolbar *)thisToolBar;
+//SubView
++(void) setSubScreen:(id)thisView;
++(void) setSubLabel:(id)thisLabel and:(NSInteger)iIndex;
++(void) setSubButton:(id)thisButton and:(NSInteger)iIndex;
++(void) setTableView:(id)thisTableView;
 @end
 #endif

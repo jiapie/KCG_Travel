@@ -46,6 +46,11 @@
 		F88DA9551BC25940007DC071 /* Marker_Hotel01.png in Resources */ = {isa = PBXBuildFile; fileRef = F88DA9511BC25940007DC071 /* Marker_Hotel01.png */; settings = {ASSET_TAGS = (); }; };
 		F88DA9561BC25940007DC071 /* Marker_Hotel02.png in Resources */ = {isa = PBXBuildFile; fileRef = F88DA9521BC25940007DC071 /* Marker_Hotel02.png */; settings = {ASSET_TAGS = (); }; };
 		F88DA9571BC25940007DC071 /* Marker_Restaurant.png in Resources */ = {isa = PBXBuildFile; fileRef = F88DA9531BC25940007DC071 /* Marker_Restaurant.png */; settings = {ASSET_TAGS = (); }; };
+		F896DE0E1BCDDD30009F64AC /* MRT.json in Resources */ = {isa = PBXBuildFile; fileRef = F896DE0D1BCDDD30009F64AC /* MRT.json */; settings = {ASSET_TAGS = (); }; };
+		F896DE101BCDDE55009F64AC /* MRT_O.png in Resources */ = {isa = PBXBuildFile; fileRef = F896DE0F1BCDDE55009F64AC /* MRT_O.png */; settings = {ASSET_TAGS = (); }; };
+		F896DE121BCDDE5E009F64AC /* MRT_R.png in Resources */ = {isa = PBXBuildFile; fileRef = F896DE111BCDDE5E009F64AC /* MRT_R.png */; settings = {ASSET_TAGS = (); }; };
+		F896DE141BCDFBB0009F64AC /* aim.png in Resources */ = {isa = PBXBuildFile; fileRef = F896DE131BCDFBB0009F64AC /* aim.png */; settings = {ASSET_TAGS = (); }; };
+		F896DE161BCDFBBB009F64AC /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = F896DE151BCDFBBB009F64AC /* Menu.png */; settings = {ASSET_TAGS = (); }; };
 		F8AC53CA1BCB85720070B1D6 /* 3Star.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AC53C41BCB85720070B1D6 /* 3Star.png */; settings = {ASSET_TAGS = (); }; };
 		F8AC53CB1BCB85720070B1D6 /* 4Star.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AC53C51BCB85720070B1D6 /* 4Star.png */; settings = {ASSET_TAGS = (); }; };
 		F8AC53CC1BCB85720070B1D6 /* 5Star.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AC53C61BCB85720070B1D6 /* 5Star.png */; settings = {ASSET_TAGS = (); }; };
@@ -130,6 +135,11 @@
 		F88DA9511BC25940007DC071 /* Marker_Hotel01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Marker_Hotel01.png; path = pics/Marker_Hotel01.png; sourceTree = "<group>"; };
 		F88DA9521BC25940007DC071 /* Marker_Hotel02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Marker_Hotel02.png; path = pics/Marker_Hotel02.png; sourceTree = "<group>"; };
 		F88DA9531BC25940007DC071 /* Marker_Restaurant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Marker_Restaurant.png; path = pics/Marker_Restaurant.png; sourceTree = "<group>"; };
+		F896DE0D1BCDDD30009F64AC /* MRT.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = MRT.json; path = json/MRT.json; sourceTree = "<group>"; };
+		F896DE0F1BCDDE55009F64AC /* MRT_O.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MRT_O.png; path = pics/MRT_O.png; sourceTree = "<group>"; };
+		F896DE111BCDDE5E009F64AC /* MRT_R.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MRT_R.png; path = pics/MRT_R.png; sourceTree = "<group>"; };
+		F896DE131BCDFBB0009F64AC /* aim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aim.png; path = pics/aim.png; sourceTree = "<group>"; };
+		F896DE151BCDFBBB009F64AC /* Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Menu.png; path = pics/Menu.png; sourceTree = "<group>"; };
 		F8AC53C41BCB85720070B1D6 /* 3Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3Star.png; path = pics/3Star.png; sourceTree = "<group>"; };
 		F8AC53C51BCB85720070B1D6 /* 4Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 4Star.png; path = pics/4Star.png; sourceTree = "<group>"; };
 		F8AC53C61BCB85720070B1D6 /* 5Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 5Star.png; path = pics/5Star.png; sourceTree = "<group>"; };
@@ -192,6 +202,7 @@
 		F812EE891BBE4D7800AAB386 /* KCG_Travel */ = {
 			isa = PBXGroup;
 			children = (
+				F896DE0C1BCDDCF8009F64AC /* json */,
 				F812EEFD1BBE4F5200AAB386 /* UI */,
 				F812EEE01BBE4E4300AAB386 /* pics */,
 				F812EED01BBE4E2400AAB386 /* shared */,
@@ -253,6 +264,10 @@
 		F812EEE01BBE4E4300AAB386 /* pics */ = {
 			isa = PBXGroup;
 			children = (
+				F896DE151BCDFBBB009F64AC /* Menu.png */,
+				F896DE131BCDFBB0009F64AC /* aim.png */,
+				F896DE111BCDDE5E009F64AC /* MRT_R.png */,
+				F896DE0F1BCDDE55009F64AC /* MRT_O.png */,
 				F8AC53C41BCB85720070B1D6 /* 3Star.png */,
 				F8AC53C51BCB85720070B1D6 /* 4Star.png */,
 				F8AC53C61BCB85720070B1D6 /* 5Star.png */,
@@ -298,6 +313,14 @@
 				F812EF0B1BBE505800AAB386 /* ViewController.m */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		F896DE0C1BCDDCF8009F64AC /* json */ = {
+			isa = PBXGroup;
+			children = (
+				F896DE0D1BCDDD30009F64AC /* MRT.json */,
+			);
+			name = json;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,17 +430,22 @@
 				F8AC53CA1BCB85720070B1D6 /* 3Star.png in Resources */,
 				F812EF241BBE775000AAB386 /* Search.png in Resources */,
 				F812EEF31BBE4E4B00AAB386 /* Location.png in Resources */,
+				F896DE121BCDDE5E009F64AC /* MRT_R.png in Resources */,
 				F88DA9571BC25940007DC071 /* Marker_Restaurant.png in Resources */,
+				F896DE0E1BCDDD30009F64AC /* MRT.json in Resources */,
 				F8AC53CB1BCB85720070B1D6 /* 4Star.png in Resources */,
 				F812EEF01BBE4E4B00AAB386 /* Facebook Filled.png in Resources */,
 				F88DA9561BC25940007DC071 /* Marker_Hotel02.png in Resources */,
+				F896DE141BCDFBB0009F64AC /* aim.png in Resources */,
 				F812EEF11BBE4E4B00AAB386 /* facebook.png in Resources */,
+				F896DE161BCDFBBB009F64AC /* Menu.png in Resources */,
 				F812EE9D1BBE4D7800AAB386 /* LaunchScreen.storyboard in Resources */,
 				F88DA9551BC25940007DC071 /* Marker_Hotel01.png in Resources */,
 				F8AC53CC1BCB85720070B1D6 /* 5Star.png in Resources */,
 				F812EF231BBE775000AAB386 /* Restaurant.png in Resources */,
 				F812EF201BBE774600AAB386 /* Left Footprint.png in Resources */,
 				F8AC53CF1BCB85720070B1D6 /* Paper Plane.png in Resources */,
+				F896DE101BCDDE55009F64AC /* MRT_O.png in Resources */,
 				F812EEEF1BBE4E4B00AAB386 /* Checked Checkbox.png in Resources */,
 				F8AC53CE1BCB85720070B1D6 /* OtherHotel.png in Resources */,
 				F8AC53CD1BCB85720070B1D6 /* CurrentLocation.png in Resources */,

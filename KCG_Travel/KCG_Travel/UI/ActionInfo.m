@@ -54,7 +54,7 @@
     //View
     [Display setScreen:thisView];
     //MainTitle
-    [Display setMainTitle:lMainTitle and:NO];
+    [Display setMainTitle:lMainTitle];
     //MapView
     [Display setWorkArea:thisTableView and:NO];
     //[thisMap setHidden:YES];
