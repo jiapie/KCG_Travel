@@ -131,13 +131,15 @@
     [MainTitle setFrame:CGRectMake(X, Y, W, H)];
 }
 
-+(void)setMainTitleButton:(id)thisButton and:(BOOL)bFirst
++(void)setMainTitleButton:(id)thisButton and:(BOOL)bFirst and:(NSInteger)iIndex
 {
     CGFloat W = MainMenuBarH;
     CGFloat H = MainMenuBarH;
-    CGFloat X = 0;
+    CGFloat X = 0 + (MainMenuBarH * iIndex);
     if(bFirst == NO)
-        X = UI_SCREEN_W - MainMenuBarH;
+    {
+        X = UI_SCREEN_W -  MainMenuBarH - (MainMenuBarH * iIndex);
+    }
     CGFloat Y = StartTopH ;
     
     [thisButton setFrame:CGRectMake(X, Y, W, H)];

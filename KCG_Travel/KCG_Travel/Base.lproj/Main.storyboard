@@ -30,7 +30,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" semanticContentAttribute="forceRightToLeft" id="lTV-Kq-oBD">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="lTV-Kq-oBD">
                                 <rect key="frame" x="0.0" y="61" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <animations/>
@@ -41,14 +41,19 @@
                                             <action selector="bNavigation_Action:" destination="GQB-UM-SJT" id="iFi-dM-tdO"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem image="Facebook Filled.png" width="60" style="plain" id="JnK-1i-z1B">
+                                    <barButtonItem tag="1" image="Facebook Filled.png" width="60" style="plain" id="JnK-1i-z1B">
                                         <connections>
                                             <action selector="bShareFB_Action:" destination="GQB-UM-SJT" id="VZ3-NW-tps"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem image="Line.png" width="60" style="plain" id="EH0-G2-JHe">
+                                    <barButtonItem tag="2" image="Line.png" width="60" style="plain" id="EH0-G2-JHe">
                                         <connections>
                                             <action selector="bShareLine_Action:" destination="GQB-UM-SJT" id="AEn-6l-OhC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="3" image="Like_F.png" width="60" style="plain" id="Oeb-PK-ZB1">
+                                        <connections>
+                                            <action selector="bFAvorite_Action:" destination="GQB-UM-SJT" id="1Eg-J1-8If"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -502,7 +507,7 @@
                                     <outlet property="delegate" destination="CVV-HF-H8T" id="Z9f-y6-ecA"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint:選擇感興趣的項目，察看旅館/民宿細節。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3BO-G9-Ke3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: 旅館等級以圖示星號顯示。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3BO-G9-Ke3">
                                 <rect key="frame" x="0.0" y="600" width="375" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
@@ -657,6 +662,15 @@
                                     <action selector="bAim_Action:" destination="WGH-Ij-xt5" eventType="touchDown" id="Wav-1D-KmJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kYP-CG-BiM">
+                                <rect key="frame" x="80" y="0.0" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <state key="normal" image="Map.png"/>
+                                <connections>
+                                    <action selector="bMap_Action:" destination="WGH-Ij-xt5" eventType="touchDown" id="XcW-DU-hLc"/>
+                                </connections>
+                            </button>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Pq-ar-frX">
                                 <rect key="frame" x="0.0" y="100" width="300" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -783,6 +797,7 @@
                     <connections>
                         <outlet property="bAim" destination="9Tq-Qq-cOx" id="VQl-tc-G24"/>
                         <outlet property="bChooseLocation" destination="YZ3-jb-TvI" id="7CB-qy-dVW"/>
+                        <outlet property="bMap" destination="kYP-CG-BiM" id="UKA-yn-bjx"/>
                         <outlet property="bMenu" destination="xI2-Sp-Xh4" id="Eif-yT-n3b"/>
                         <outlet property="lHint" destination="23E-3g-qjK" id="MWb-QI-1up"/>
                         <outlet property="lLocation01" destination="RxH-TM-J97" id="XeP-0p-rjY"/>
@@ -815,7 +830,9 @@
         <image name="Home.png" width="40" height="40"/>
         <image name="Hotel.png" width="40" height="40"/>
         <image name="Left Footprint.png" width="40" height="40"/>
+        <image name="Like_F.png" width="40" height="40"/>
         <image name="Line.png" width="40" height="40"/>
+        <image name="Map.png" width="50" height="50"/>
         <image name="Marker_Hotel01.png" width="32" height="32"/>
         <image name="Marker_Hotel02.png" width="32" height="32"/>
         <image name="Menu.png" width="50" height="50"/>
@@ -825,11 +842,11 @@
         <image name="aim.png" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6aM-2I-ceb"/>
         <segue reference="rAl-YV-Iw5"/>
         <segue reference="eIP-O2-fYW"/>
-        <segue reference="Y0G-0d-JhP"/>
-        <segue reference="Kj4-8x-Vqr"/>
-        <segue reference="YNs-Zr-3TO"/>
+        <segue reference="SlT-BL-Es5"/>
+        <segue reference="63b-ek-j2X"/>
+        <segue reference="PkK-HB-GlT"/>
+        <segue reference="8TJ-rZ-uXB"/>
     </inferredMetricsTieBreakers>
 </document>

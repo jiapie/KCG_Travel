@@ -58,8 +58,8 @@
     [Display setScreen:thisView];
     //MainTitle
     [Display setMainTitle:lMainTitle];
-    [Display setMainTitleButton:bHotel01 and:YES];
-    [Display setMainTitleButton:bHotel02 and:NO];
+    [Display setMainTitleButton:bHotel01 and:YES and:0];
+    [Display setMainTitleButton:bHotel02 and:NO and:0];
     //MapView
     [Display setWorkArea:thisTableView and:NO];
     //[thisMap setHidden:YES];

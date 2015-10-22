@@ -19,6 +19,84 @@
     dGlobal         = [[NSMutableDictionary alloc]init];
     aLoaction       = [[NSArray alloc]init];
     chooseDateMode  = DisplayAllData;
+    
+    //Search Record
+    NSMutableDictionary *RecordInfo = [[NSMutableDictionary alloc]init];
+    [RecordInfo setValue:sLocationNow forKey:sJson_Loaction];
+    [RecordInfo setValue:@"" forKey:sJson_Area];
+    [RecordInfo setValue:sTypeScene forKey:sJson_Type];
+    [dGlobal setValue:RecordInfo forKey:sJson_Record];
+    
+    //Favorite
+    NSString *sWorkPath = NSTemporaryDirectory();
+    NSString *sFilename = [sWorkPath stringByAppendingPathComponent:sFile_Favorite];
+    //NSLog(@"sFilename:%@",sFilename);
+    //Data
+    NSFileManager *fm = [NSFileManager defaultManager];
+    if([fm fileExistsAtPath:sFilename] == YES)
+    {//讀出來用
+        NSFileHandle *handle01 = [NSFileHandle fileHandleForReadingAtPath:sFilename];
+        NSData *sAllData = [handle01 readDataToEndOfFile];
+        //NSLog(@"sAllData:%@",sAllData);
+        [handle01 closeFile];
+        
+        if(sAllData != nil)
+        {
+            //1) read JSON
+            NSError *err = nil;
+            NSArray *aFavoriteInfo = [NSJSONSerialization JSONObjectWithData:sAllData options: NSJSONReadingMutableContainers error: &err];
+        
+            //NSLog(@"err:%@",err.description);
+            [dGlobal setValue:aFavoriteInfo forKey:sJson_Favorite];
+        }
+        else
+        {
+            NSArray *aFavoriteInfo = [[NSArray alloc]init];
+            [dGlobal setValue:aFavoriteInfo forKey:sJson_Favorite];            
+        }
+    }
+}
+
++(void)writeFavoriteData:(NSArray *)array;
+{
+    NSString *sWorkPath = NSTemporaryDirectory();
+    NSString *sFilename = [sWorkPath stringByAppendingPathComponent:sFile_Favorite];
+    //NSLog(@"Filename:%@",sFilename);
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    if([fm fileExistsAtPath:sFilename] == YES)
+    {
+        [fm removeItemAtPath:sFilename error:nil];
+    }
+    
+    //寫檔
+    [[NSFileManager defaultManager] createFileAtPath:sFilename contents:nil attributes:nil] ;
+    NSFileHandle *handle01  = [NSFileHandle fileHandleForWritingAtPath:sFilename];
+    NSString *jsonString = [NSArray NSArraytoJSON:array];
+    NSData *sAllData = [jsonString dataUsingEncoding: NSUTF8StringEncoding];
+    [handle01 writeData:sAllData];
+    [handle01 closeFile];
+}
+
++(BOOL)bFavorite_Check:(NSArray *)array and:(NSString *)sName
+{
+    BOOL bFavorite = NO;
+    
+    //NSArray *array = [global.dGlobal valueForKey:sJson_Favorite];
+    for(id item in array)
+    {
+        NSString *sItem = item;
+        NSRange searchResult = [sName rangeOfString:sItem];
+        //NSLog(@"sName:%@,sItem:%@, Length:%ld",sName,sItem,searchResult.location);
+        //if([sItem isEqualToString:sName])
+        if(searchResult.location != NSNotFound)
+        {
+            bFavorite = YES;
+            break;
+        }
+    }
+    
+    return  bFavorite;
 }
 
 +(double)distanceBetweenOrderBy:(double)lat1 :(double)lat2 :(double)lng1 :(double)lng2

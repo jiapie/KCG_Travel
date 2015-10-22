@@ -48,7 +48,7 @@ static NSString *Font_Helvetica = @"Helvetica";
 +(void) setTableCell:(UITableView *)tableView and:(UITableViewCell *)cell and:(NSInteger)Line;
 //MainTitle
 +(void)setMainTitle:(id)MainTitle;
-+(void)setMainTitleButton:(id)thisButton and:(BOOL)bFirst;
++(void)setMainTitleButton:(id)thisButton and:(BOOL)bFirst and:(NSInteger)iIndex;
 +(void) setBackButton:(UIButton*)thisButton;
 //SearchBar
 +(void) setSearchBar:(UISearchBar *)thisSearchBar;

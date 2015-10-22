@@ -35,6 +35,7 @@
 #define UI_SCREEN_H [[UIScreen mainScreen] bounds].size.height
 #define UI_SCREEN_W [[UIScreen mainScreen] bounds].size.width
 static NSString *sFile_MRTData                      = @"MRT.json";
+static NSString *sFile_Favorite                     = @"Favorite.json";
 //頁面切換
 static NSString *sPage_MainMenu                     = @"MainMenu";
 static NSString *sPage_ActionInfo                   = @"ActionInfo";
@@ -61,6 +62,7 @@ static NSString *sPicHotel01    = @"Marker_Hotel01.png";
 static NSString *sPicHotel02    = @"Marker_Hotel02.png";
 static NSString *sPicMRTR       = @"MRT_R.png";
 static NSString *sPicMRTO       = @"MRT_O.png";
+static NSString *sPicLike       = @"Like_F.png";
 
 //URL
 //活動資料
@@ -79,19 +81,37 @@ static NSString *cCancel            = @"取消";
 static NSString *cDataProcessWait   = @"資料處理中";
 static NSString *cNonInfo           = @"近期沒有相關訊息";
 
+//sCity
+static NSString *sKaohsiungCity     = @"高雄市";
+//sLocation
+//目前所在位置, 最近的捷運站, 行政區
+static NSString *sLocationNow       = @"目前所在位置";
+static NSString *sLocationMRT       = @"最近的捷運站";
+static NSString *sLocationArea      = @"行政區";
 //sType
 static NSString *sTypeScene         = @"景點";
 static NSString *sTypeFood          = @"餐廳";
 static NSString *sTypeHotel01       = @"旅館";
 static NSString *sTypeHotel02       = @"民宿";
 static NSString *sTypeMRT           = @"捷運";
-
+//Map
+static NSString *sMapMode           = @"地圖模式";
+static NSString *sMapMode01         = @"道路模式";
+static NSString *sMapMode02         = @"衛星空照圖";
+static NSString *sMapMode03         = @"道路地圖混合空拍圖";
 //Json
 static NSString *sJson_Action       = @"Action";
 static NSString *sJson_Scence       = @"Scence";
 static NSString *sJson_Food         = @"Food";
 static NSString *sJson_Hotel01      = @"Hotel01";
 static NSString *sJson_Hotel02      = @"Hotel02";
+static NSString *sJson_Record       = @"Record";
+static NSString *sJson_Favorite     = @"Favorite";
+
+//Json Record
+static NSString *sJson_Loaction     = @"Location";
+static NSString *sJson_Area         = @"Area";
+static NSString *sJson_Type         = @"Type";
 //
 static NSString *sJson_name         = @"name";
 //static NSString *sJson_unit         = @"unit";
@@ -131,6 +151,8 @@ enum ChooseDateMode
 +(double)calDuringDays:(NSDate *)fromDate and:(NSDate *)toDate;
 +(MKPointAnnotation *) getAddressLatLng:(NSString *)sAddress;
 +(double) CalDistanceFromTaiwan:(CLLocationCoordinate2D)gotoPoint;
++(void)writeFavoriteData:(NSArray *)array;
++(BOOL)bFavorite_Check:(NSArray *)array and:(NSString *)sName;
 @end
 
 #endif

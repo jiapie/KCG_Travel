@@ -82,7 +82,6 @@
 -(void)getAllInfo
 {
     //活動資料,景點資料,餐飲資料,一般旅館,民宿
-    
     //dAllStatus = [[NSMutableDictionary alloc]init];
     [self getStatus:sGetActionInfoURL and:sJson_Action];
     [self getStatus:sGetSceneInfoURL and:sJson_Scence];
@@ -106,15 +105,23 @@
     
     NSData *httpBody = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
     
-    __autoreleasing NSError* error =nil;
-    NSDictionary *dGetStatus = [NSJSONSerialization JSONObjectWithData:httpBody options:NSJSONReadingMutableContainers error: &error];
-    //NSLog(@"dGetStatus:%@",sDataType);
-    
-    [global.dGlobal setValue:dGetStatus forKey:sDataType];
-    //NSLog(@"Global:%@",[global.dGlobal valueForKey:sDataType]);
-    
-    if(error != nil)
+    if(err == nil)
     {
+        __autoreleasing NSError* error =nil;
+        NSDictionary *dGetStatus = [NSJSONSerialization JSONObjectWithData:httpBody options:NSJSONReadingMutableContainers error: &error];
+        //NSLog(@"dGetStatus:%@",sDataType);
+    
+        [global.dGlobal setValue:dGetStatus forKey:sDataType];
+        //NSLog(@"Global:%@",[global.dGlobal valueForKey:sDataType]);
+        
+        if(error != nil)
+        {
+            bSend = NO;
+        }
+    }
+    else
+    {
+        //NSLog(@"%@",err.description);
         bSend = NO;
     }
     

@@ -57,6 +57,9 @@
 		F8AC53CD1BCB85720070B1D6 /* CurrentLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AC53C71BCB85720070B1D6 /* CurrentLocation.png */; settings = {ASSET_TAGS = (); }; };
 		F8AC53CE1BCB85720070B1D6 /* OtherHotel.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AC53C81BCB85720070B1D6 /* OtherHotel.png */; settings = {ASSET_TAGS = (); }; };
 		F8AC53CF1BCB85720070B1D6 /* Paper Plane.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AC53C91BCB85720070B1D6 /* Paper Plane.png */; settings = {ASSET_TAGS = (); }; };
+		F8EE4C271BD8754F00129464 /* Like.png in Resources */ = {isa = PBXBuildFile; fileRef = F8EE4C251BD8754F00129464 /* Like.png */; settings = {ASSET_TAGS = (); }; };
+		F8EE4C291BD882B600129464 /* Like_F.png in Resources */ = {isa = PBXBuildFile; fileRef = F8EE4C281BD882B600129464 /* Like_F.png */; settings = {ASSET_TAGS = (); }; };
+		F8EE4C2B1BD8929000129464 /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = F8EE4C2A1BD8929000129464 /* Map.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +149,9 @@
 		F8AC53C71BCB85720070B1D6 /* CurrentLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CurrentLocation.png; path = pics/CurrentLocation.png; sourceTree = "<group>"; };
 		F8AC53C81BCB85720070B1D6 /* OtherHotel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OtherHotel.png; path = pics/OtherHotel.png; sourceTree = "<group>"; };
 		F8AC53C91BCB85720070B1D6 /* Paper Plane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Paper Plane.png"; path = "pics/Paper Plane.png"; sourceTree = "<group>"; };
+		F8EE4C251BD8754F00129464 /* Like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Like.png; path = pics/Like.png; sourceTree = "<group>"; };
+		F8EE4C281BD882B600129464 /* Like_F.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Like_F.png; path = pics/Like_F.png; sourceTree = "<group>"; };
+		F8EE4C2A1BD8929000129464 /* Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Map.png; path = pics/Map.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +270,9 @@
 		F812EEE01BBE4E4300AAB386 /* pics */ = {
 			isa = PBXGroup;
 			children = (
+				F8EE4C2A1BD8929000129464 /* Map.png */,
+				F8EE4C281BD882B600129464 /* Like_F.png */,
+				F8EE4C251BD8754F00129464 /* Like.png */,
 				F896DE151BCDFBBB009F64AC /* Menu.png */,
 				F896DE131BCDFBB0009F64AC /* aim.png */,
 				F896DE111BCDDE5E009F64AC /* MRT_R.png */,
@@ -390,6 +399,7 @@
 				TargetAttributes = {
 					F812EE861BBE4D7800AAB386 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 9AAXBDDB2H;
 					};
 					F812EEA21BBE4D7800AAB386 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -426,12 +436,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8EE4C271BD8754F00129464 /* Like.png in Resources */,
 				F812EF1F1BBE774600AAB386 /* Hotel.png in Resources */,
 				F8AC53CA1BCB85720070B1D6 /* 3Star.png in Resources */,
 				F812EF241BBE775000AAB386 /* Search.png in Resources */,
 				F812EEF31BBE4E4B00AAB386 /* Location.png in Resources */,
 				F896DE121BCDDE5E009F64AC /* MRT_R.png in Resources */,
 				F88DA9571BC25940007DC071 /* Marker_Restaurant.png in Resources */,
+				F8EE4C291BD882B600129464 /* Like_F.png in Resources */,
 				F896DE0E1BCDDD30009F64AC /* MRT.json in Resources */,
 				F8AC53CB1BCB85720070B1D6 /* 4Star.png in Resources */,
 				F812EEF01BBE4E4B00AAB386 /* Facebook Filled.png in Resources */,
@@ -439,6 +451,7 @@
 				F896DE141BCDFBB0009F64AC /* aim.png in Resources */,
 				F812EEF11BBE4E4B00AAB386 /* facebook.png in Resources */,
 				F896DE161BCDFBBB009F64AC /* Menu.png in Resources */,
+				F8EE4C2B1BD8929000129464 /* Map.png in Resources */,
 				F812EE9D1BBE4D7800AAB386 /* LaunchScreen.storyboard in Resources */,
 				F88DA9551BC25940007DC071 /* Marker_Hotel01.png in Resources */,
 				F8AC53CC1BCB85720070B1D6 /* 5Star.png in Resources */,
@@ -633,11 +646,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = KCG_Travel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Star.KCG-Travel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -645,11 +661,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = KCG_Travel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Star.KCG-Travel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

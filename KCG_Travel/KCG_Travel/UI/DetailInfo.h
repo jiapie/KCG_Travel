@@ -28,6 +28,7 @@
     NSArray                 *tableTitleArray;
     NSMutableArray          *tableDisplayArray;
     
+    BOOL                    bExist;
     BOOL                    bLocation;
     MKPointAnnotation       *point;
 }
@@ -40,9 +41,10 @@
 -(IBAction)bGotoHotel_Action:(id)sender;
 -(IBAction)bGotoSelf_Action:(id)sender;
 
--(IBAction)bAim_Action:(id)sender;
+//-(IBAction)bAim_Action:(id)sender;
 -(IBAction)bNavigation_Action:(id)sender;
 -(IBAction)bShareLine_Action:(id)sender;
 -(IBAction)bShareFB_Action:(id)sender;
+-(IBAction)bFAvorite_Action:(id)sender;
 @end
 

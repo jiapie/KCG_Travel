@@ -29,13 +29,14 @@
 {
     [super viewDidLoad];
     [self DisplayScreen];
-    
+    [self ReloadRecordData];
+    /*
     dispatch_async(dispatch_get_main_queue(), ^{
         [self performSelectorOnMainThread:@selector(setAllPoint:) withObject:@"" waitUntilDone:YES];
     });
-    
+    */
     //NOW
-    [self bAim_Action:nil];
+    //[self bAim_Action:nil];
     
     // Do any additional setup after loading the view, typically from a nib.
     self.locationManager = [[CLLocationManager alloc] init];
@@ -50,7 +51,7 @@
     [self.locationManager startUpdatingLocation];
     
     thisMap.showsUserLocation = YES;
-    [thisMap setMapType:MKMapTypeHybrid];
+    //[thisMap setMapType:MKMapTypeHybrid];
     [thisMap setZoomEnabled:YES];
     [thisMap setScrollEnabled:YES];
     
@@ -132,12 +133,17 @@
     [bChooseLocation setTitle:cellView.textLabel.text forState:UIControlStateNormal];
     //+(MKPointAnnotation *) getAddressLatLng:(NSString *)sAddress;
 
-    NSString *sAddress = [NSString stringWithFormat:@"高雄市%@",cellView.textLabel.text];
+    NSString *sAddress = [NSString stringWithFormat:@"%@%@",sKaohsiungCity, cellView.textLabel.text];
     MKPointAnnotation *point = [Global getAddressLatLng:sAddress];
     MKCoordinateRegion region = {point.coordinate ,NearbyMap};
     [thisMap setRegion:region animated:YES];
 
     [thisTableView setHidden:YES];
+    
+    //RECORD
+    RecordInfo = [global.dGlobal valueForKey:sJson_Record];
+    [RecordInfo setValue:cellView.textLabel.text forKey:sJson_Area];
+    [global.dGlobal setValue:RecordInfo forKey:sJson_Record];
 }
 
 -(void)DisplayScreen
@@ -146,8 +152,9 @@
     [Display setScreen:thisView];
     //MainTitle
     [Display setMainTitle:lMainTitle];
-    [Display setMainTitleButton:bMenu and:YES];
-    [Display setMainTitleButton:bAim and:NO];
+    [Display setMainTitleButton:bMenu and:YES and:0];
+    [Display setMainTitleButton:bMap and:NO and:1];
+    [Display setMainTitleButton:bAim and:NO and:0];
     //SearchBar
     [Display setSearchBar:thisSearchBar];
     //MapView
@@ -188,10 +195,62 @@
     [thisMap addAnnotations:allPoint];
 }
 
+-(void) ReloadRecordData
+{//READ RECORD
+    RecordInfo = [global.dGlobal valueForKey:sJson_Record];
+    //NSLog(@"RECORD :%@",RecordInfo);
+    
+    NSString *sType = [NSString stringWithFormat:@"%@",[RecordInfo valueForKey:sJson_Type]];
+    if([sType isEqualToString:sTypeScene])
+    {
+        segmented02.selectedSegmentIndex = 0;
+    }
+    else if([sType isEqualToString:sTypeFood])
+    {
+        segmented02.selectedSegmentIndex = 1;
+    }
+    else if([sType isEqualToString:sTypeHotel01])
+    {
+        segmented02.selectedSegmentIndex = 2;
+    }
+    else //if([sType isEqualToString:sTypeHotel02])
+    {
+        segmented02.selectedSegmentIndex = 3;
+    }
+    //NSLog(@"sType:%@",sType);
+    [self segmented02ControlIndexChanged:segmented02];
+    
+    NSString *sLocation = [NSString stringWithFormat:@"%@",[RecordInfo valueForKey:sJson_Loaction]];
+    //目前所在位置, 最近的捷運站, 行政區
+    if([sLocation isEqualToString:sLocationNow])
+    {
+        segmented01.selectedSegmentIndex = 0;
+    }
+    else if([sLocation isEqualToString:sLocationMRT])
+    {
+        segmented01.selectedSegmentIndex = 1;
+    }
+    else
+    {
+        segmented01.selectedSegmentIndex = 2;
+    }
+    //NSLog(@"sLocation:%@",sLocation);
+    [self segmented01ControlIndexChanged:segmented01];
+    
+    //行政區
+    NSString *sArea = [NSString stringWithFormat:@"%@",[RecordInfo valueForKey:sJson_Area]];
+    if(![sArea isEqualToString:@""])
+    {
+        NSString *sAddress = [NSString stringWithFormat:@"%@%@",sKaohsiungCity, sArea];
+        MKPointAnnotation *point = [Global getAddressLatLng:sAddress];
+        MKCoordinateRegion region = {point.coordinate ,NearbyMap};
+        [thisMap setRegion:region animated:YES];
+    }
+}
+
 -(void)showMRT:(NSString *)sSearch
 {
-    //NSLog(@"showMRT");
-    
+    //NSLog(@"showMRT");    
     NSString *sPath = [[NSBundle mainBundle] bundlePath];
     NSString *sFile = [sPath stringByAppendingPathComponent:@"MRT.json"];
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -496,6 +555,18 @@
                 annotationView.image = [UIImage imageNamed:sPicMRTO];
             }
         }
+        
+        //最愛
+        //NSLog(@"title:%@",[annotation title]);
+        NSArray *fSplit = [[annotation title] componentsSeparatedByString:@" "];
+        if(fSplit.count > 1)
+        {
+            if([Global bFavorite_Check:[global.dGlobal valueForKey:sJson_Favorite] and:fSplit[1]] == YES)
+            {
+                //NSLog(@"Love:%@",[annotation title]);
+                annotationView.image = [UIImage imageNamed:sPicLike];
+            }
+        }
     }
     
     annotationView.annotation = annotation;
@@ -552,6 +623,25 @@
     [UIView commitAnimations];
 }
 
+-(IBAction)bMap_Action:(id)sender
+{
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:sMapMode
+                message:@""
+                delegate:self
+                cancelButtonTitle:cCancel
+                otherButtonTitles:sMapMode01, sMapMode02, sMapMode03,nil];
+    
+    [message show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex != 0)
+    {
+        thisMap.mapType = (buttonIndex - 1);
+    }
+}
+
 -(IBAction)bAim_Action:(id)sender
 {
     double dbLatitude = self.locationManager.location.coordinate.latitude;
@@ -600,6 +690,11 @@
     [thisMap removeAnnotations:pointsArray];
     [allPoint removeAllObjects];
     */
+    
+    //RECORD
+    RecordInfo = [global.dGlobal valueForKey:sJson_Record];
+    [RecordInfo setValue:[sender titleForSegmentAtIndex:[sender selectedSegmentIndex]] forKey:sJson_Loaction];
+    [global.dGlobal setValue:RecordInfo forKey:sJson_Record];
     
     switch ([sender selectedSegmentIndex])
     {
@@ -658,11 +753,17 @@
     //NSLog(@"segmented02ControlIndexChanged %@", [sender titleForSegmentAtIndex:[sender selectedSegmentIndex]]);
     
     NSString *sSearch = [sender titleForSegmentAtIndex:[sender selectedSegmentIndex]];
+    //NSLog(@"search:%@",sSearch);
     [thisTableView setHidden:YES];
     NSArray *pointsArray = [thisMap annotations];
     [thisMap removeAnnotations:pointsArray];
     [allPoint removeAllObjects];
     
+    //RECORD
+    RecordInfo = [global.dGlobal valueForKey:sJson_Record];
+    [RecordInfo setValue:[sender titleForSegmentAtIndex:[sender selectedSegmentIndex]] forKey:sJson_Type];
+    [global.dGlobal setValue:RecordInfo forKey:sJson_Record];
+
      switch ([sender selectedSegmentIndex])
      {//地點 (景點,餐廳, 旅館, 民宿)
          case 0: //景點

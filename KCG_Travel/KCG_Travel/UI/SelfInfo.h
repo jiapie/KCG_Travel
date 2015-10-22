@@ -16,6 +16,7 @@
     IBOutlet UILabel        *lwait;
     IBOutlet UILabel        *lMainTitle;
     IBOutlet UIButton       *bMenu;
+    IBOutlet UIButton       *bMap;
     IBOutlet UIButton       *bAim;
     IBOutlet UISearchBar    *thisSearchBar;
     IBOutlet MKMapView      *thisMap;
@@ -39,6 +40,7 @@
     NSMutableArray          *allPoint;
     NSMutableArray          *allPointXY;
     NSArray                 *tableArray;
+    NSMutableDictionary     *RecordInfo;
 }
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -50,6 +52,7 @@
 -(IBAction)bGotoSelf_Action:(id)sender;
 
 -(IBAction)bMenu_Action:(id)sender;
+-(IBAction)bMap_Action:(id)sender;
 -(IBAction)bAim_Action:(id)sender;
 -(IBAction)bChooseLocation_Action:(id)sender;
 @end

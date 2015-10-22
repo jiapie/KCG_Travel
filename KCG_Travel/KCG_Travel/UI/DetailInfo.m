@@ -70,6 +70,16 @@
     [Display setHintBar:lHint];
     //SystemButton
     [Display setToolBar:thisToolBar];
+    
+    
+    if([Global bFavorite_Check:[global.dGlobal valueForKey:sJson_Favorite] and:sSendName] == YES)
+    {//Remove
+        [subToolBar.items[3] setImage:[UIImage imageNamed:@"Like.png"]];
+    }
+    else
+    {//Record
+        [subToolBar.items[3] setImage:[UIImage imageNamed:sPicLike]];
+    }
 }
 
 -(void)showActionInfo
@@ -756,5 +766,42 @@
     {
         [MessageBox showWarningMsg:sWarningTitle and:sNonInstallFB];
     }
+}
+
+-(IBAction)bFAvorite_Action:(id)sender
+{
+    //NSLog(@"Name:%@",sSendName);
+    //NSLog(@"Favorite:%@",[global.dGlobal valueForKey:sJson_Favorite]);
+    NSMutableArray *array = [[NSMutableArray alloc]init];
+    
+    //Copy Data
+    for(id item in [global.dGlobal valueForKey:sJson_Favorite])
+    {
+        [array addObject:item];
+    }
+
+    if([Global bFavorite_Check:[global.dGlobal valueForKey:sJson_Favorite] and:sSendName] == YES)
+    {//Remove
+        [sender setImage:[UIImage imageNamed:sPicLike]];
+
+        for(id item in array)
+        {
+            NSString *sItem = item;
+            if([sItem isEqualToString:sSendName])
+            {
+                [array removeObject:sSendName];
+            }
+        }
+        [global.dGlobal setValue:array forKey:sJson_Favorite];
+    }
+    else
+    {//Record
+        [sender setImage:[UIImage imageNamed:@"Like.png"]];
+        [array addObject:sSendName];
+        [global.dGlobal setValue:array forKey:sJson_Favorite];
+    }
+    
+    [Global writeFavoriteData:array];
+
 }
 @end
