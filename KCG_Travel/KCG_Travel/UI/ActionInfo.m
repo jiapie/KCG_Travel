@@ -53,6 +53,7 @@
 {
     //View
     [Display setScreen:thisView];
+    [Display setScreen:thisBackground];
     //MainTitle
     [Display setMainTitle:lMainTitle];
     //MapView

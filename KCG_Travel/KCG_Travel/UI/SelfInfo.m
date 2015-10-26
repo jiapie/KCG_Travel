@@ -44,7 +44,7 @@
     if(UI_IS_IOS8_AND_HIGHER)
     {
         [self.locationManager requestWhenInUseAuthorization];
-        [self.locationManager requestAlwaysAuthorization];
+        //[self.locationManager requestAlwaysAuthorization];
     }
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -150,6 +150,7 @@
 {
     //View
     [Display setScreen:thisView];
+    [Display setScreen:thisBackground];
     //MainTitle
     [Display setMainTitle:lMainTitle];
     [Display setMainTitleButton:bMenu and:YES and:0];

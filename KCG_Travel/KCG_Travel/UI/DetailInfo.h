@@ -12,6 +12,7 @@
 @interface DetailInfoViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate,CLLocationManagerDelegate>
 {
     IBOutlet UIView         *thisView;
+    IBOutlet UIImageView    *thisBackground;
     IBOutlet UILabel        *lwait;
     IBOutlet UILabel        *lMainTitle;
     IBOutlet UIToolbar      *subToolBar;

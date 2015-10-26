@@ -56,10 +56,11 @@
 {
     //View
     [Display setScreen:thisView];
+    [Display setScreen:thisBackground];
     //MainTitle
     [Display setMainTitle:lMainTitle];
     [Display setMainTitleButton:bHotel01 and:YES and:0];
-    [Display setMainTitleButton:bHotel02 and:NO and:0];
+    [Display setMainTitleButton:bHotel02 and:YES and:1];
     //MapView
     [Display setWorkArea:thisTableView and:NO];
     //[thisMap setHidden:YES];
@@ -151,9 +152,9 @@
     NSString *simpleTableIdentifier = sSimpleTableItem;
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     //cell.textLabel.lineBreakMode = NSLineBreakByCharWrapping;
-    cell.textLabel.numberOfLines = 4;
+    cell.textLabel.numberOfLines = 3;
     [Display setTableCell:tableView and:cell and:cell.textLabel.numberOfLines];
-    CGFloat cell_H = cell.textLabel.frame.size.height * 4;
+    CGFloat cell_H = cell.textLabel.frame.size.height * 2;
     
     switch (indexPath.section)
     {

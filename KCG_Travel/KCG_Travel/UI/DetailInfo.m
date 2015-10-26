@@ -35,7 +35,7 @@
     if(UI_IS_IOS8_AND_HIGHER)
     {
         [self.locationManager requestWhenInUseAuthorization];
-        [self.locationManager requestAlwaysAuthorization];
+        //[self.locationManager requestAlwaysAuthorization];
     }
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -60,6 +60,7 @@
 {
     //View
     [Display setScreen:thisView];
+    [Display setScreen:thisBackground];
     //MainTitle
     [Display setMainTitle:lMainTitle];
     [Display setSubToolBar:subToolBar];
@@ -583,7 +584,7 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     
     UIWebView *thisActionContent = [[UIWebView alloc]init];
-    thisActionContent.frame = CGRectMake(0, 0, UI_SCREEN_W,400);
+    thisActionContent.frame = CGRectMake(0, 0, (UI_SCREEN_W * 0.9),400);
     
     switch (indexPath.section)
     {//名稱,電話,地址,敘述
@@ -593,8 +594,9 @@
         case 3://地址
             [tableView setRowHeight:Row_OneLine];
             cell.textLabel.numberOfLines = 1;
-            cell.textLabel.frame = CGRectMake(0, 0, UI_SCREEN_W, Row_OneLine);
+            cell.textLabel.frame = CGRectMake(0, 0, (UI_SCREEN_W * 0.9), Row_OneLine);
             cell.textLabel.text = tableDisplayArray[indexPath.section];
+            cell.textLabel.adjustsFontSizeToFitWidth = YES;
             break;
             
         case 4://敘述

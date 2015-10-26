@@ -12,6 +12,7 @@
 @interface ViewController : UIViewController
 {
     IBOutlet UIView         *thisView;
+    IBOutlet UIImageView    *thisBackground;
     IBOutlet UILabel        *lwait;
     Global                  *global;
 }

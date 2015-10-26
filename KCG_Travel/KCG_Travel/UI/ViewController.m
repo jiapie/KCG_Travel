@@ -77,6 +77,7 @@
 {
     //View
     [Display setScreen:thisView];
+    [Display setScreen:thisBackground];
 }
 
 -(void)getAllInfo

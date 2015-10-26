@@ -12,6 +12,7 @@
 @interface ActionInfoViewController : UIViewController
 {
     IBOutlet UIView         *thisView;
+    IBOutlet UIImageView    *thisBackground;
     IBOutlet UILabel        *lwait;
     IBOutlet UILabel        *lMainTitle;
     IBOutlet UITableView    *thisTableView;

@@ -107,9 +107,11 @@
 
 +(void) setTableCell:(UITableView *)tableView and:(UITableViewCell *)cell and:(NSInteger)Line
 {
+    [cell setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.3]];
+    
     tableView.rowHeight = [self getTableRowHight:Line];
     CGFloat cellH = tableView.rowHeight / Line;
-    CGFloat cellW = UI_SCREEN_W - cellH;
+    CGFloat cellW = (UI_SCREEN_W * 0.9) - cellH;
     [cell.textLabel setFrame:CGRectMake(0, 0, cellW, cellH)];
     [Display setFontStyle:cell.textLabel and:NSTextAlignmentLeft];
     [cell.textLabel setFont:[UIFont fontWithName:Font_Helvetica size:FONTSIZE_20]];
@@ -123,22 +125,23 @@
 
 +(void)setMainTitle:(id)MainTitle
 {
-    CGFloat W = UI_SCREEN_W;
+    CGFloat W = UI_SCREEN_W * 0.9;
     CGFloat H = MainMenuBarH;
-    CGFloat X = 0;
+    CGFloat X = 0 + (UI_SCREEN_W * 0.05);
     CGFloat Y = StartTopH ;
 
     [MainTitle setFrame:CGRectMake(X, Y, W, H)];
+    [MainTitle setBackgroundColor:[UIColor clearColor]];
 }
 
 +(void)setMainTitleButton:(id)thisButton and:(BOOL)bFirst and:(NSInteger)iIndex
 {
     CGFloat W = MainMenuBarH;
     CGFloat H = MainMenuBarH;
-    CGFloat X = 0 + (MainMenuBarH * iIndex);
+    CGFloat X = 0 + (UI_SCREEN_W * 0.05) + (MainMenuBarH * iIndex);
     if(bFirst == NO)
     {
-        X = UI_SCREEN_W -  MainMenuBarH - (MainMenuBarH * iIndex);
+        X = (UI_SCREEN_W * 0.9) -  MainMenuBarH - (MainMenuBarH * iIndex);
     }
     CGFloat Y = StartTopH ;
     
@@ -165,8 +168,8 @@
 
 +(void) setSearchBar:(UISearchBar *)thisSearchBar
 {
-    CGFloat W = UI_SCREEN_W;
-    CGFloat X = 0;
+    CGFloat W = UI_SCREEN_W * 0.9;
+    CGFloat X = 0 + (UI_SCREEN_W * 0.05);
     CGFloat Y = StartTopH + MainMenuBarH;
     CGFloat H = SearchBarH;
 
@@ -176,63 +179,38 @@
 
 +(void)setWorkArea:(id)thisArea and:(BOOL)bBar
 {
-    CGFloat W = UI_SCREEN_W;
-    CGFloat X = 0;
+    CGFloat W = UI_SCREEN_W * 0.9;
+    CGFloat X = 0 + (UI_SCREEN_W * 0.05);
     CGFloat Y = StartTopH + MainMenuBarH;
-    CGFloat H = UI_SCREEN_H - StartTopH - MainMenuBarH - HintBarH - MenuBarH;
+    CGFloat H = (UI_SCREEN_H * 0.95) - StartTopH - MainMenuBarH - HintBarH - MenuBarH;
     if(bBar == YES)
     {
         Y = StartTopH + MainMenuBarH + SearchBarH;
-        H = UI_SCREEN_H - StartTopH - MainMenuBarH - SearchBarH - HintBarH - MenuBarH;
+        H = (UI_SCREEN_H * 0.95) - StartTopH - MainMenuBarH - SearchBarH - HintBarH - MenuBarH;
     }
 
     [thisArea setFrame:CGRectMake(X, Y, W, H)];
     //NSLog(@"WorkArea %f,%f,%f,%f",X,Y,W,H);
+    [thisArea setBackgroundColor:[UIColor clearColor]];
 }
 
 +(void)setHintBar:(id)thisBar
 {
-    CGFloat W = UI_SCREEN_W;
+    CGFloat W = UI_SCREEN_W * 0.9;
     CGFloat H = HintBarH;
-    CGFloat X = 0;
-    CGFloat Y = UI_SCREEN_H - MenuBarH - H;
+    CGFloat X = 0 + (UI_SCREEN_W * 0.05);
+    CGFloat Y = (UI_SCREEN_H * 0.95) - MenuBarH - H;
     
     [thisBar setFrame:CGRectMake(X, Y, W, H)];
     //NSLog(@"ToolsBar %f,%f,%f,%f",X,Y,W,H);
 }
 
-/*
-+(void)setSystemButton:(UIButton*)thisButton and:(NSInteger)iIndex and:(BOOL)bHidden
-{
-    CGFloat buttonW = UI_SCREEN_W / 5;
-    CGFloat buttonH = buttonW;
-    CGFloat buttonX = (buttonW * iIndex);
-    CGFloat buttonY = (UI_SCREEN_H - buttonH);
-    
-    [thisButton setFrame:CGRectMake(buttonX, buttonY,buttonW, buttonH)];
-    [thisButton setBackgroundColor:[UIColor whiteColor]];
-    
-    [[thisButton layer] setCornerRadius:10.0f];
-    [[thisButton layer] setBorderWidth:1.0f];
-    [[thisButton layer] setBorderColor:[UIColor lightGrayColor].CGColor];
-    
-    thisButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    thisButton.titleLabel.lineBreakMode = NSLineBreakByCharWrapping;
-    thisButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    
-    if(bHidden == YES)
-    {
-        [thisButton setHidden:YES];
-    }
-}
-*/
-
 +(void)setToolBar:(UIToolbar *)thisToolBar
 {
-    CGFloat toolbarW = UI_SCREEN_W;
+    CGFloat toolbarW = UI_SCREEN_W * 0.9;
     CGFloat toolbarH = MenuBarH;
-    CGFloat toolbarX = 0;//(buttonW * iIndex);
-    CGFloat toolbarY = (UI_SCREEN_H - toolbarH);
+    CGFloat toolbarX = 0  + (UI_SCREEN_W * 0.05);
+    CGFloat toolbarY = (UI_SCREEN_H * 0.95) - toolbarH;
     
     [thisToolBar setFrame:CGRectMake(toolbarX, toolbarY, toolbarW, toolbarH)];
     [thisToolBar setBackgroundColor:[UIColor whiteColor]];
@@ -240,16 +218,15 @@
     for(NSInteger i=0;i<thisToolBar.items.count;i++)
     {
         //NSLog(@"W  = %.f",UI_SCREEN_W);
-
-        //320
-        CGFloat W = 50;
+        //50
+        CGFloat W = 45;
         if(UI_IS_IPHONE6)
-        {//375
-            W = 60;
+        {//60
+            W = 54;
         }
         else if (UI_IS_IPHONE6PLUS)
-        {//414
-            W = 68;
+        {//68
+            W = 63;
         }
         
         thisToolBar.items[i].width = W;
@@ -258,8 +235,8 @@
 
 +(void) setSubToolBar:(UIToolbar *)thisToolBar
 {
-    CGFloat toolbarW = UI_SCREEN_W;
-    CGFloat toolbarX = 0;
+    CGFloat toolbarW = UI_SCREEN_W * 0.9;
+    CGFloat toolbarX = 0  + (UI_SCREEN_W * 0.05);
     CGFloat toolbarY = StartTopH + MainMenuBarH;
     CGFloat toolbarH = SearchBarH;
     
@@ -288,7 +265,7 @@
 +(void) setSubScreen:(id)thisView
 {
     CGFloat H = 170.0;
-    [thisView setFrame:CGRectMake(0, 0-H, UI_SCREEN_W, H)];
+    [thisView setFrame:CGRectMake((UI_SCREEN_W * 0.05), 0 - H, (UI_SCREEN_W * 0.9), H)];
     //NSLog(@"%f,%f",UI_SCREEN_W,UI_SCREEN_H);
 }
 
@@ -305,7 +282,7 @@
 +(void) setSubButton:(id)thisButton and:(NSInteger)iIndex
 {
     //60,70.300,30    
-    CGFloat buttonW = UI_SCREEN_W - 10.0 - 60.0;
+    CGFloat buttonW = (UI_SCREEN_W * 0.9) - 10.0 - 60.0;
     CGFloat buttonX = 60.0;
     CGFloat buttonY = 40.0 + 40.0 * iIndex;
     CGFloat buttonH = 30.0;
@@ -316,6 +293,6 @@
 +(void) setTableView:(id)thisTableView
 {
     CGFloat H = 170.0;
-    [thisTableView setFrame:CGRectMake(0, (StartTopH + MainMenuBarH + H) , UI_SCREEN_W, H)];
+    [thisTableView setFrame:CGRectMake((UI_SCREEN_W * 0.05), (StartTopH + MainMenuBarH + H) , (UI_SCREEN_W * 0.9), H)];
 }
 @end

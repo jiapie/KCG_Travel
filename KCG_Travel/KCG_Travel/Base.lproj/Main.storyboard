@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
         <!--Detail Info View Controller-->
@@ -13,6 +13,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background.png" id="ldG-9w-5ch">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                            </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kOz-JG-r4H">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -124,6 +129,7 @@
                         <outlet property="lMainTitle" destination="Kup-mJ-j1R" id="D6j-bF-Li4"/>
                         <outlet property="lwait" destination="kOz-JG-r4H" id="3v7-Kl-Npl"/>
                         <outlet property="subToolBar" destination="lTV-Kq-oBD" id="dQ4-g2-uv2"/>
+                        <outlet property="thisBackground" destination="ldG-9w-5ch" id="v9r-WT-s53"/>
                         <outlet property="thisTableView" destination="PEN-7V-een" id="jcW-Xo-Dfz"/>
                         <outlet property="thisToolBar" destination="Dtg-Ow-z5J" id="kIe-Gw-e6u"/>
                         <outlet property="thisView" destination="6ig-LV-2ZU" id="O3S-eg-pKo"/>
@@ -146,8 +152,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="First.jpg" id="Q0s-lQ-zGB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                            </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fQR-KF-7mc">
-                                <rect key="frame" x="0.0" y="30" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -162,6 +173,7 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="lwait" destination="fQR-KF-7mc" id="YhR-Bz-Vmw"/>
+                        <outlet property="thisBackground" destination="Q0s-lQ-zGB" id="9F5-N3-3uq"/>
                         <outlet property="thisView" destination="8bC-Xf-vdC" id="aNJ-Jp-d5n"/>
                         <segue destination="dUB-0c-Dn8" kind="modal" identifier="ActionInfo" id="UnI-rI-bcU"/>
                     </connections>
@@ -178,6 +190,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background.png" id="ESo-QC-Mkh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                            </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H5t-bJ-KYc">
                                 <rect key="frame" x="0.0" y="30" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -218,28 +235,29 @@
                                 <rect key="frame" x="0.0" y="621" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <barButtonItem image="Home.png" width="50" style="plain" id="nLX-Df-3sd">
+                                    <barButtonItem image="B_Home.png" width="50" style="plain" id="nLX-Df-3sd">
                                         <connections>
                                             <action selector="bGotoAction_Action:" destination="dUB-0c-Dn8" id="p0D-E9-naS"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="1" image="Left Footprint.png" width="50" style="plain" id="DVm-LU-zMA">
+                                    <barButtonItem tag="1" image="B_footprint.png" width="50" style="plain" id="DVm-LU-zMA">
                                         <connections>
                                             <action selector="bGotoScence_Action:" destination="dUB-0c-Dn8" id="1n7-9Z-AmZ"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="2" image="Restaurant.png" width="50" style="plain" id="zJo-61-QIo">
+                                    <barButtonItem tag="2" image="B_Restaurant.png" width="50" style="plain" id="zJo-61-QIo">
                                         <connections>
                                             <action selector="bGotoFood_Action:" destination="dUB-0c-Dn8" id="bIS-zV-K0B"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="3" image="Hotel.png" width="50" style="plain" id="wDT-5B-IAA">
+                                    <barButtonItem tag="3" image="B_Hotel.png" width="50" style="plain" id="wDT-5B-IAA">
                                         <connections>
                                             <action selector="bGotoHotel_Action:" destination="dUB-0c-Dn8" id="1Nd-CK-RQc"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="4" image="Search.png" width="50" style="plain" id="q25-73-aQ3">
+                                    <barButtonItem tag="4" image="B_Self.png" width="50" style="plain" id="q25-73-aQ3">
                                         <connections>
                                             <action selector="bGotoSelf_Action:" destination="dUB-0c-Dn8" id="zve-5U-1B9"/>
                                         </connections>
@@ -256,6 +274,7 @@
                         <outlet property="lHint" destination="3v9-qF-xcl" id="r4r-TM-2fO"/>
                         <outlet property="lMainTitle" destination="bVy-Y3-1UM" id="WBE-Zd-OC4"/>
                         <outlet property="lwait" destination="H5t-bJ-KYc" id="Kqk-lP-sxj"/>
+                        <outlet property="thisBackground" destination="ESo-QC-Mkh" id="jEw-gq-hV9"/>
                         <outlet property="thisTableView" destination="TEM-ql-85i" id="6fa-KA-vye"/>
                         <outlet property="thisToolBar" destination="bPA-Js-7EY" id="WLn-dL-Ih7"/>
                         <outlet property="thisView" destination="dRI-aJ-ko7" id="kMh-Cg-F5M"/>
@@ -278,6 +297,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background.png" id="8uj-H6-L7z">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                            </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vg3-Ye-URb">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -319,27 +343,27 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <items>
-                                    <barButtonItem image="Home.png" width="50" style="plain" id="H95-cC-DYS">
+                                    <barButtonItem image="B_Home.png" width="50" style="plain" id="H95-cC-DYS">
                                         <connections>
                                             <action selector="bGotoAction_Action:" destination="IKt-0U-GH2" id="mkS-Gn-piE"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="1" image="Left Footprint.png" width="50" style="plain" id="zf7-l3-7BT">
+                                    <barButtonItem tag="1" image="B_footprint.png" width="50" style="plain" id="zf7-l3-7BT">
                                         <connections>
                                             <action selector="bGotoScence_Action:" destination="IKt-0U-GH2" id="CXI-We-CME"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="2" image="Restaurant.png" width="50" style="plain" id="dtN-pw-xf9">
+                                    <barButtonItem tag="2" image="B_Restaurant.png" width="50" style="plain" id="dtN-pw-xf9">
                                         <connections>
                                             <action selector="bGotoFood_Action:" destination="IKt-0U-GH2" id="mDN-d8-kLt"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="3" image="Hotel.png" width="50" style="plain" id="mKQ-JO-pZ6">
+                                    <barButtonItem tag="3" image="B_Hotel.png" width="50" style="plain" id="mKQ-JO-pZ6">
                                         <connections>
                                             <action selector="bGotoHotel_Action:" destination="IKt-0U-GH2" id="mv2-xI-5IC"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="4" image="Search.png" width="50" style="plain" id="Lrm-k8-XNG">
+                                    <barButtonItem tag="4" image="B_Self.png" width="50" style="plain" id="Lrm-k8-XNG">
                                         <connections>
                                             <action selector="bGotoSelf_Action:" destination="IKt-0U-GH2" id="aTG-h1-SRf"/>
                                         </connections>
@@ -357,6 +381,7 @@
                         <outlet property="lHint" destination="KBK-Yu-aON" id="hdN-R3-trJ"/>
                         <outlet property="lMainTitle" destination="kZx-Uz-HLM" id="aVi-I4-24y"/>
                         <outlet property="lwait" destination="Vg3-Ye-URb" id="QSe-Pc-ABh"/>
+                        <outlet property="thisBackground" destination="8uj-H6-L7z" id="eEq-Ub-ubJ"/>
                         <outlet property="thisTableView" destination="JHf-g3-Jmq" id="aXd-yC-Igv"/>
                         <outlet property="thisToolBar" destination="DPF-8A-ZHn" id="rwU-5M-0Eb"/>
                         <outlet property="thisView" destination="21y-Bk-wnS" id="Qx7-nD-ijT"/>
@@ -379,6 +404,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background.png" id="Wxf-Ty-tfx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                            </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="70X-aM-zJS">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -420,27 +450,27 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <items>
-                                    <barButtonItem image="Home.png" width="50" style="plain" id="rG8-Vg-m12">
+                                    <barButtonItem image="B_Home.png" width="50" style="plain" id="rG8-Vg-m12">
                                         <connections>
                                             <action selector="bGotoAction_Action:" destination="UTE-yO-x1j" id="qae-jA-gj0"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="1" image="Left Footprint.png" width="50" style="plain" id="HJ5-RE-a4h">
+                                    <barButtonItem tag="1" image="B_footprint.png" width="50" style="plain" id="HJ5-RE-a4h">
                                         <connections>
                                             <action selector="bGotoScence_Action:" destination="UTE-yO-x1j" id="0jC-SQ-Iem"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="2" image="Restaurant.png" width="50" style="plain" id="kcN-DM-bcf">
+                                    <barButtonItem tag="2" image="B_Restaurant.png" width="50" style="plain" id="kcN-DM-bcf">
                                         <connections>
                                             <action selector="bGotoFood_Action:" destination="UTE-yO-x1j" id="Ve3-tn-YGk"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="3" image="Hotel.png" width="50" style="plain" id="V2c-W2-mR6">
+                                    <barButtonItem tag="3" image="B_Hotel.png" width="50" style="plain" id="V2c-W2-mR6">
                                         <connections>
                                             <action selector="bGotoHotel_Action:" destination="UTE-yO-x1j" id="d48-wj-dh3"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="4" image="Search.png" width="50" style="plain" id="PpD-6F-SUa">
+                                    <barButtonItem tag="4" image="B_Self.png" width="50" style="plain" id="PpD-6F-SUa">
                                         <connections>
                                             <action selector="bGotoSelf_Action:" destination="UTE-yO-x1j" id="lSW-k0-qdy"/>
                                         </connections>
@@ -458,6 +488,7 @@
                         <outlet property="lHint" destination="SCD-wn-H0R" id="V3g-Ud-DWa"/>
                         <outlet property="lMainTitle" destination="Wrx-Ru-KJ0" id="zcd-4B-6Re"/>
                         <outlet property="lwait" destination="70X-aM-zJS" id="jgM-AG-dYO"/>
+                        <outlet property="thisBackground" destination="Wxf-Ty-tfx" id="gHb-aP-z8C"/>
                         <outlet property="thisTableView" destination="e4x-iG-ayW" id="dQi-ec-aeK"/>
                         <outlet property="thisToolBar" destination="LIo-zu-xgI" id="lMZ-U2-qcB"/>
                         <outlet property="thisView" destination="7Ki-dx-Cfm" id="8gR-a9-jjJ"/>
@@ -480,6 +511,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background.png" id="WeB-Fp-ZbU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                            </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Qw-ut-7ea">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -521,27 +557,27 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <items>
-                                    <barButtonItem image="Home.png" width="50" style="plain" id="e2T-9v-SFt">
+                                    <barButtonItem image="B_Home.png" width="50" style="plain" id="e2T-9v-SFt">
                                         <connections>
                                             <action selector="bGotoAction_Action:" destination="CVV-HF-H8T" id="PW1-ZY-7zl"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="1" image="Left Footprint.png" width="50" style="plain" id="VVH-ac-RiB">
+                                    <barButtonItem tag="1" image="B_footprint.png" width="50" style="plain" id="VVH-ac-RiB">
                                         <connections>
                                             <action selector="bGotoScence_Action:" destination="CVV-HF-H8T" id="EBA-EZ-85f"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="2" image="Restaurant.png" width="50" style="plain" id="HIQ-H2-3Mn">
+                                    <barButtonItem tag="2" image="B_Restaurant.png" width="50" style="plain" id="HIQ-H2-3Mn">
                                         <connections>
                                             <action selector="bGotoFood_Action:" destination="CVV-HF-H8T" id="Yvh-KD-11r"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="3" image="Hotel.png" width="50" style="plain" id="StY-d5-uvd">
+                                    <barButtonItem tag="3" image="B_Hotel.png" width="50" style="plain" id="StY-d5-uvd">
                                         <connections>
                                             <action selector="bGotoHotel_Action:" destination="CVV-HF-H8T" id="1Mj-F8-v8q"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="4" image="Search.png" width="50" style="plain" id="cKO-ks-Bvy">
+                                    <barButtonItem tag="4" image="B_Self.png" width="50" style="plain" id="cKO-ks-Bvy">
                                         <connections>
                                             <action selector="bGotoSelf_Action:" destination="CVV-HF-H8T" id="sdV-kY-SxD"/>
                                         </connections>
@@ -553,7 +589,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <state key="normal" image="Marker_Hotel01.png"/>
+                                <state key="normal" image="B_Hotel01.png"/>
                                 <connections>
                                     <action selector="bHotel01_Action:" destination="CVV-HF-H8T" eventType="touchDown" id="Pbp-wz-m55"/>
                                 </connections>
@@ -562,7 +598,7 @@
                                 <rect key="frame" x="40" y="0.0" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <state key="normal" image="Marker_Hotel02.png"/>
+                                <state key="normal" image="B_Hotel02.png"/>
                                 <connections>
                                     <action selector="bHotel02_Action:" destination="CVV-HF-H8T" eventType="touchDown" id="bt9-3s-hJd"/>
                                 </connections>
@@ -579,6 +615,7 @@
                         <outlet property="lHint" destination="3BO-G9-Ke3" id="LrN-u5-Lia"/>
                         <outlet property="lMainTitle" destination="Keb-cs-uZf" id="HuD-1S-Jac"/>
                         <outlet property="lwait" destination="2Qw-ut-7ea" id="SdH-ae-f7L"/>
+                        <outlet property="thisBackground" destination="WeB-Fp-ZbU" id="biN-Y2-gHd"/>
                         <outlet property="thisTableView" destination="dn8-0S-yKm" id="hoi-7s-ZzE"/>
                         <outlet property="thisToolBar" destination="D5U-q5-Ihj" id="CX3-38-5bD"/>
                         <outlet property="thisView" destination="3lT-hO-aBz" id="xDL-Si-Qf1"/>
@@ -601,6 +638,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background.png" id="mdr-VI-9g5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                            </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xvP-jg-FRK">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -648,7 +690,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <state key="normal" image="Menu.png"/>
+                                <state key="normal" image="B_Menu.png"/>
                                 <connections>
                                     <action selector="bMenu_Action:" destination="WGH-Ij-xt5" eventType="touchDown" id="Tu2-1k-3hG"/>
                                 </connections>
@@ -657,7 +699,7 @@
                                 <rect key="frame" x="40" y="0.0" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <state key="normal" image="aim.png"/>
+                                <state key="normal" image="B_Aim.png"/>
                                 <connections>
                                     <action selector="bAim_Action:" destination="WGH-Ij-xt5" eventType="touchDown" id="Wav-1D-KmJ"/>
                                 </connections>
@@ -760,27 +802,27 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <items>
-                                    <barButtonItem image="Home.png" width="50" style="plain" id="0kJ-7e-z61">
+                                    <barButtonItem image="B_Home.png" width="50" style="plain" id="0kJ-7e-z61">
                                         <connections>
                                             <action selector="bGotoAction_Action:" destination="WGH-Ij-xt5" id="FXc-Km-T7q"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="1" image="Left Footprint.png" width="50" style="plain" id="wqY-NX-DP0">
+                                    <barButtonItem tag="1" image="B_footprint.png" width="50" style="plain" id="wqY-NX-DP0">
                                         <connections>
                                             <action selector="bGotoScence_Action:" destination="WGH-Ij-xt5" id="ozr-O2-cNA"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="2" image="Restaurant.png" width="50" style="plain" id="A2k-RW-IX3">
+                                    <barButtonItem tag="2" image="B_Restaurant.png" width="50" style="plain" id="A2k-RW-IX3">
                                         <connections>
                                             <action selector="bGotoFood_Action:" destination="WGH-Ij-xt5" id="EHE-NJ-ylY"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="3" image="Hotel.png" width="50" style="plain" id="PzK-uM-tfN">
+                                    <barButtonItem tag="3" image="B_Hotel.png" width="50" style="plain" id="PzK-uM-tfN">
                                         <connections>
                                             <action selector="bGotoHotel_Action:" destination="WGH-Ij-xt5" id="wZW-7j-kAo"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="4" image="Search.png" width="50" style="plain" id="xKP-dS-sB0">
+                                    <barButtonItem tag="4" image="B_Self.png" width="50" style="plain" id="xKP-dS-sB0">
                                         <connections>
                                             <action selector="bGotoSelf_Action:" destination="WGH-Ij-xt5" id="6a6-1S-0Dh"/>
                                         </connections>
@@ -808,6 +850,7 @@
                         <outlet property="segmented01" destination="hOF-dw-ZR6" id="cnU-Pl-X0O"/>
                         <outlet property="segmented02" destination="2Am-KQ-ZCH" id="sNk-TX-vXM"/>
                         <outlet property="settingsView" destination="ap4-Jr-Gh4" id="kEN-Km-0sF"/>
+                        <outlet property="thisBackground" destination="mdr-VI-9g5" id="ajb-Mn-cP3"/>
                         <outlet property="thisMap" destination="qbn-N4-9fX" id="ZuL-bQ-511"/>
                         <outlet property="thisSearchBar" destination="EOL-u6-scV" id="nUj-cW-rPI"/>
                         <outlet property="thisTableView" destination="8Pq-ar-frX" id="4C7-f1-MYK"/>
@@ -826,27 +869,34 @@
         </scene>
     </scenes>
     <resources>
+        <image name="B_Aim.png" width="50" height="50"/>
+        <image name="B_Home.png" width="40" height="40"/>
+        <image name="B_Hotel.png" width="40" height="40"/>
+        <image name="B_Hotel01.png" width="50" height="50"/>
+        <image name="B_Hotel02.png" width="50" height="50"/>
+        <image name="B_Menu.png" width="50" height="50"/>
+        <image name="B_Restaurant.png" width="40" height="40"/>
+        <image name="B_Self.png" width="40" height="40"/>
+        <image name="B_footprint.png" width="40" height="40"/>
+        <image name="Background.png" width="320" height="568"/>
         <image name="Facebook Filled.png" width="40" height="40"/>
+        <image name="First.jpg" width="320" height="568"/>
         <image name="Home.png" width="40" height="40"/>
         <image name="Hotel.png" width="40" height="40"/>
         <image name="Left Footprint.png" width="40" height="40"/>
         <image name="Like_F.png" width="40" height="40"/>
         <image name="Line.png" width="40" height="40"/>
         <image name="Map.png" width="50" height="50"/>
-        <image name="Marker_Hotel01.png" width="32" height="32"/>
-        <image name="Marker_Hotel02.png" width="32" height="32"/>
-        <image name="Menu.png" width="50" height="50"/>
         <image name="Paper Plane.png" width="40" height="40"/>
         <image name="Restaurant.png" width="40" height="40"/>
         <image name="Search.png" width="40" height="40"/>
-        <image name="aim.png" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rAl-YV-Iw5"/>
-        <segue reference="eIP-O2-fYW"/>
-        <segue reference="SlT-BL-Es5"/>
-        <segue reference="63b-ek-j2X"/>
-        <segue reference="PkK-HB-GlT"/>
-        <segue reference="8TJ-rZ-uXB"/>
+        <segue reference="mE3-dC-cEX"/>
+        <segue reference="UnI-rI-bcU"/>
+        <segue reference="jQt-hq-il6"/>
+        <segue reference="KfA-1S-V2g"/>
+        <segue reference="B5E-zC-01j"/>
+        <segue reference="Sd6-Tq-uKy"/>
     </inferredMetricsTieBreakers>
 </document>
