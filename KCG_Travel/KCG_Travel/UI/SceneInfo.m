@@ -80,6 +80,7 @@
         
         NSData *Name = [dItem valueForKey:@"Name"];
         NSString *sName = [NSString stringWithFormat:@"%@",Name];
+        sName = [sName stringByReplacingOccurrencesOfString:@"?" withString:@""];
         
         NSData *Address = [dItem valueForKey:@"Add"];
         NSData *Tel = [dItem valueForKey:@"Tel"];

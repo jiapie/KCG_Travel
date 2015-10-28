@@ -619,6 +619,7 @@
     {//Hide
         //NSLog(@"Hide");
         rect.origin.y = 0 - rect.size.height;
+        [thisTableView setHidden:YES];
     }
     settingsView.frame = rect;
     [UIView commitAnimations];

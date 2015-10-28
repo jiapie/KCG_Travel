@@ -705,15 +705,21 @@
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"line://"]])
     {
         //文字
-        NSString *plainString = @"分享的文字";
+        NSString *plainString = tableDisplayArray[0];
         NSString *contentKey = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)plainString,NULL,(CFStringRef)@"!*'();:@&=+$,/?%#[]",kCFStringEncodingUTF8);
         NSString *contentType = @"text";
         NSString *urlString = [NSString stringWithFormat:@"line://msg/%@/%@",
                                contentType, contentKey];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
         
-        //網址
-        NSString *shareurlString = @"分享的網址";
+        //分享的網址
+        NSString *shareurlString = [NSString stringWithFormat:@"http://maps.google.com/?q=%f,%f",point.coordinate.latitude,point.coordinate.longitude];
+        if(bLocation == YES)
+        {
+            shareurlString = [NSString stringWithFormat:@"https://www.google.com.tw/maps?saddr=%f,%f&daddr=%f,%f",self.locationManager.location.coordinate.latitude,self.locationManager.location.coordinate.longitude,point.coordinate.latitude,point.coordinate.longitude];
+        }
+        
+        
         NSString *contentKeyUrl = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)shareurlString,NULL,(CFStringRef)@"!*'();:@&=+$,/?%#[]",kCFStringEncodingUTF8);
         NSString *contentTypeUrl = @"text";
         NSString *urlStringUrl = [NSString stringWithFormat:@"line://msg/%@/%@",
@@ -721,9 +727,31 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStringUrl]];
         
         //圖片
+        if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)])
+            UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, [UIScreen mainScreen].scale);
+        else
+            UIGraphicsBeginImageContext(self.view.bounds.size);
+        
+        [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        NSString *sWorkPath = NSTemporaryDirectory();
+        NSString *sFilename = [sWorkPath stringByAppendingPathComponent:@"screenshot.png"];
+        NSData * imgData = UIImagePNGRepresentation(image);
+        if(imgData)
+        {
+            //NSLog(@"sFilename:%@",sFilename);
+            [imgData writeToFile:sFilename atomically:YES];
+        }
+        else
+        {
+            NSLog(@"error while taking screenshot");
+        }
+        
         UIPasteboard *pasteboard = [UIPasteboard pasteboardWithUniqueName];
         NSString *pasteboardName = pasteboard.name;
-        NSURL *imageURL = [NSURL URLWithString:@"分享的圖片"];
+        NSURL *imageURL = [NSURL URLWithString:sFilename];
         [pasteboard setData:UIImagePNGRepresentation([UIImage imageWithData:[NSData dataWithContentsOfURL:imageURL]]) forPasteboardType:@"public.png"];
         
         NSString *contentTypeImage = @"image";
@@ -741,6 +769,9 @@
 
 -(IBAction)bShareFB_Action:(id)sender
 {
+    [self showFacebookMsg:@"分享至Facebook" andContent:@"請選擇"];
+
+    /*
     //判斷社群網站的服務是否可用
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
@@ -749,14 +780,42 @@
         SLComposeViewController *mySocialComposeView = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         
         //插入文字
-        [mySocialComposeView setInitialText:@"分享的文字"];
-        
-        //插入網址
-        NSURL *myURL = [[NSURL alloc] initWithString:@"分享的網址"];
+        //NSLog(@"abc:%@",tableDisplayArray[0]);
+        //[mySocialComposeView setInitialText:@"分享"];
+     
+        //分享的網址
+        NSString *sURL = [NSString stringWithFormat:@"http://maps.google.com/?q=%f,%f",point.coordinate.latitude,point.coordinate.longitude];
+        if(bLocation == YES)
+        {
+            sURL = [NSString stringWithFormat:@"https://www.google.com.tw/maps?saddr=%f,%f&daddr=%f,%f",self.locationManager.location.coordinate.latitude,self.locationManager.location.coordinate.longitude,point.coordinate.latitude,point.coordinate.longitude];
+        }
+
+        NSURL *myURL = [[NSURL alloc] initWithString:sURL];
         [mySocialComposeView addURL: myURL];
-        
+     
         //插入圖片
-        UIImage *myImage = [UIImage imageNamed:@"分享的圖片"];
+        if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)])
+            UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, [UIScreen mainScreen].scale);
+        else
+            UIGraphicsBeginImageContext(self.view.bounds.size);
+        
+        [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        NSString *sWorkPath = NSTemporaryDirectory();
+        NSString *sFilename = [sWorkPath stringByAppendingPathComponent:@"screenshot.png"];
+        NSData * imgData = UIImagePNGRepresentation(image);
+        if(imgData)
+        {
+            //NSLog(@"sFilename:%@",sFilename);
+            [imgData writeToFile:sFilename atomically:YES];
+        }
+        else
+        {
+            NSLog(@"error while taking screenshot");
+        }
+        UIImage *myImage = [UIImage imageNamed:sFilename];
         [mySocialComposeView addImage:myImage];
         
         //呼叫建立的SocialComposeView
@@ -767,6 +826,114 @@
     else
     {
         [MessageBox showWarningMsg:sWarningTitle and:sNonInstallFB];
+    }
+    */
+}
+
+- (void)showFacebookMsg:(NSString *)sTitle andContent:(NSString *)sContent
+{
+    NSArray *array = [[NSArray alloc] initWithObjects:
+                      @"《地圖分享》",@"《活動訊息分享》",nil];
+    
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:sTitle
+                                                      message:sContent
+                                                     delegate:self
+                                            cancelButtonTitle:cCancel
+                                            otherButtonTitles:nil];
+    
+    for (NSString *title in array)
+    {
+        [message addButtonWithTitle:title];
+    }
+    
+    [message show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 1: //@"《地圖分享》
+             //判斷社群網站的服務是否可用
+             if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+             {
+                 //建立對應社群網站的ComposeViewController
+                 SLComposeViewController *mySocialComposeView = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+             
+                 //插入文字
+                 //NSLog(@"abc:%@",tableDisplayArray[0]);
+                 //[mySocialComposeView setInitialText:@"分享"];
+             
+                 //分享的網址
+                 NSString *sURL = [NSString stringWithFormat:@"http://maps.google.com/?q=%f,%f",point.coordinate.latitude,point.coordinate.longitude];
+                 if(bLocation == YES)
+                 {
+                     sURL = [NSString stringWithFormat:@"https://www.google.com.tw/maps?saddr=%f,%f&daddr=%f,%f",self.locationManager.location.coordinate.latitude,self.locationManager.location.coordinate.longitude,point.coordinate.latitude,point.coordinate.longitude];
+                 }
+             
+                 NSURL *myURL = [[NSURL alloc] initWithString:sURL];
+                 [mySocialComposeView addURL: myURL];
+             
+                 //呼叫建立的SocialComposeView
+                 [self presentViewController:mySocialComposeView animated:YES completion:^{
+                     NSLog(@"%@",sCallSocialComposeVew);
+                 }];
+             }
+             else
+             {
+             [MessageBox showWarningMsg:sWarningTitle and:sNonInstallFB];
+             }
+            break;
+        
+        case 2: //@"《活動訊息分享》",nil];
+             //判斷社群網站的服務是否可用
+             if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+             {
+                 //建立對應社群網站的ComposeViewController
+                 SLComposeViewController *mySocialComposeView = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+             
+                 //插入文字
+                 //NSLog(@"abc:%@",tableDisplayArray[0]);
+                 //[mySocialComposeView setInitialText:@"分享"];
+                 
+                 //插入圖片
+                 if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)])
+                     UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, [UIScreen mainScreen].scale);
+                 else
+                     UIGraphicsBeginImageContext(self.view.bounds.size);
+             
+                 [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+                 UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+                 UIGraphicsEndImageContext();
+             
+                 NSString *sWorkPath = NSTemporaryDirectory();
+                 NSString *sFilename = [sWorkPath stringByAppendingPathComponent:@"screenshot.png"];
+                 NSData * imgData = UIImagePNGRepresentation(image);
+                 if(imgData)
+                 {
+                     //NSLog(@"sFilename:%@",sFilename);
+                     [imgData writeToFile:sFilename atomically:YES];
+                 }
+                 else
+                 {
+                     NSLog(@"error while taking screenshot");
+                 }
+                 UIImage *myImage = [UIImage imageNamed:sFilename];
+                 [mySocialComposeView addImage:myImage];
+             
+                 //呼叫建立的SocialComposeView
+                 [self presentViewController:mySocialComposeView animated:YES completion:^{
+                     NSLog(@"%@",sCallSocialComposeVew);
+                 }];
+                }
+            else
+            {
+                [MessageBox showWarningMsg:sWarningTitle and:sNonInstallFB];
+            }
+            break;
+
+        default:
+            break;
     }
 }
 

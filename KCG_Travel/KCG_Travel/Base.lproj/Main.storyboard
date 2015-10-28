@@ -62,6 +62,7 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="tintColor" red="0.59999999999999998" green="0.20000000000000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="PEN-7V-een">
@@ -89,33 +90,33 @@
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <barButtonItem image="Home.png" width="50" style="plain" id="acx-Bl-Q9c">
+                                    <barButtonItem image="B_Home.png" width="50" style="plain" id="acx-Bl-Q9c">
                                         <connections>
                                             <action selector="bGotoAction_Action:" destination="GQB-UM-SJT" id="IDl-8c-LHO"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="1" image="Left Footprint.png" width="50" style="plain" id="BE8-Dx-Djc">
+                                    <barButtonItem tag="1" image="B_footprint.png" width="50" style="plain" id="BE8-Dx-Djc">
                                         <connections>
                                             <action selector="bGotoScence_Action:" destination="GQB-UM-SJT" id="vVE-YS-16Q"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="2" image="Restaurant.png" width="50" style="plain" id="S8o-yI-2rW">
+                                    <barButtonItem tag="2" image="B_Restaurant.png" width="50" style="plain" id="S8o-yI-2rW">
                                         <connections>
                                             <action selector="bGotoFood_Action:" destination="GQB-UM-SJT" id="K36-vW-7zR"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="3" image="Hotel.png" width="50" style="plain" id="zrL-oT-Qrj">
+                                    <barButtonItem tag="3" image="B_Hotel.png" width="50" style="plain" id="zrL-oT-Qrj">
                                         <connections>
                                             <action selector="bGotoHotel_Action:" destination="GQB-UM-SJT" id="w6U-eO-XJr"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem tag="4" image="Search.png" width="50" style="plain" id="032-pB-xn7">
+                                    <barButtonItem tag="4" image="B_Self.png" width="50" style="plain" id="032-pB-xn7">
                                         <connections>
                                             <action selector="bGotoSelf_Action:" destination="GQB-UM-SJT" id="FKb-lk-NiZ"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
-                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                         </subviews>
@@ -203,7 +204,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活動資料" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bVy-Y3-1UM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活動訊息 (最近三個月)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bVy-Y3-1UM">
                                 <rect key="frame" x="0.0" y="40" width="375" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
@@ -263,6 +264,7 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="tintColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                         </subviews>
@@ -369,6 +371,7 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="tintColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                         </subviews>
@@ -476,6 +479,7 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="tintColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                         </subviews>
@@ -583,6 +587,7 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="tintColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XAO-bU-lFQ">
@@ -651,7 +656,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="資料搜尋" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CjG-MY-rci">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自訂行程" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CjG-MY-rci">
                                 <rect key="frame" x="0.0" y="40" width="375" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
@@ -669,7 +674,7 @@
                                     <outlet property="delegate" destination="WGH-Ij-xt5" id="KXp-qJ-xkD"/>
                                 </connections>
                             </searchBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="qbn-N4-9fX">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="qbn-N4-9fX">
                                 <rect key="frame" x="0.0" y="100" width="375" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
@@ -723,8 +728,8 @@
                                     <outlet property="delegate" destination="WGH-Ij-xt5" id="Aks-nj-M0y"/>
                                 </connections>
                             </tableView>
-                            <view alpha="0.80000001192092896" contentMode="scaleToFill" id="ap4-Jr-Gh4">
-                                <rect key="frame" x="0.0" y="-170" width="375" height="170"/>
+                            <view contentMode="scaleToFill" id="ap4-Jr-Gh4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="區域" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" id="RxH-TM-J97">
@@ -732,8 +737,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
@@ -747,15 +753,16 @@
                                             <segment title="最近的捷運站"/>
                                             <segment title="行政區"/>
                                         </segments>
-                                        <color key="tintColor" red="0.0" green="0.0" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="行政區" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" id="Uf1-i3-tvL">
                                         <rect key="frame" x="10" y="70" width="40" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
@@ -764,7 +771,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" red="0.0" green="0.0" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="請選擇"/>
                                         <connections>
                                             <action selector="bChooseLocation_Action:" destination="WGH-Ij-xt5" eventType="touchDown" id="iGU-sc-6lJ"/>
@@ -775,8 +782,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
@@ -791,11 +799,11 @@
                                             <segment title="旅館"/>
                                             <segment title="民宿"/>
                                         </segments>
-                                        <color key="tintColor" red="0.0" green="0.0" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </segmentedControl>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.95566998106060608" green="0.64087333605171959" blue="0.23902162790090259" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="I24-1b-iXg">
                                 <rect key="frame" x="0.0" y="621" width="375" height="44"/>
@@ -828,6 +836,7 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="tintColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                         </subviews>
@@ -881,22 +890,17 @@
         <image name="Background.png" width="320" height="568"/>
         <image name="Facebook Filled.png" width="40" height="40"/>
         <image name="First.jpg" width="320" height="568"/>
-        <image name="Home.png" width="40" height="40"/>
-        <image name="Hotel.png" width="40" height="40"/>
-        <image name="Left Footprint.png" width="40" height="40"/>
         <image name="Like_F.png" width="40" height="40"/>
         <image name="Line.png" width="40" height="40"/>
         <image name="Map.png" width="50" height="50"/>
         <image name="Paper Plane.png" width="40" height="40"/>
-        <image name="Restaurant.png" width="40" height="40"/>
-        <image name="Search.png" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mE3-dC-cEX"/>
-        <segue reference="UnI-rI-bcU"/>
-        <segue reference="jQt-hq-il6"/>
-        <segue reference="KfA-1S-V2g"/>
-        <segue reference="B5E-zC-01j"/>
-        <segue reference="Sd6-Tq-uKy"/>
+        <segue reference="8TJ-rZ-uXB"/>
+        <segue reference="eIP-O2-fYW"/>
+        <segue reference="rAl-YV-Iw5"/>
+        <segue reference="PkK-HB-GlT"/>
+        <segue reference="63b-ek-j2X"/>
+        <segue reference="SlT-BL-Es5"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,7 +11,6 @@
 		F812EE8F1BBE4D7800AAB386 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F812EE8E1BBE4D7800AAB386 /* AppDelegate.m */; };
 		F812EE951BBE4D7800AAB386 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F812EE931BBE4D7800AAB386 /* Main.storyboard */; };
 		F812EE981BBE4D7800AAB386 /* KCG_Travel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F812EE961BBE4D7800AAB386 /* KCG_Travel.xcdatamodeld */; };
-		F812EE9A1BBE4D7800AAB386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F812EE991BBE4D7800AAB386 /* Assets.xcassets */; };
 		F812EE9D1BBE4D7800AAB386 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F812EE9B1BBE4D7800AAB386 /* LaunchScreen.storyboard */; };
 		F812EEA81BBE4D7800AAB386 /* KCG_TravelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F812EEA71BBE4D7800AAB386 /* KCG_TravelTests.m */; };
 		F812EEB31BBE4D7800AAB386 /* KCG_TravelUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F812EEB21BBE4D7800AAB386 /* KCG_TravelUITests.m */; };
@@ -37,19 +36,8 @@
 		F812EF161BBE515900AAB386 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F812EF151BBE515900AAB386 /* MapKit.framework */; };
 		F812EF181BBE516100AAB386 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F812EF171BBE516100AAB386 /* Social.framework */; };
 		F812EF1A1BBE774000AAB386 /* Bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F812EF191BBE774000AAB386 /* Bookmark.png */; };
-		F812EF1E1BBE774600AAB386 /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = F812EF1B1BBE774600AAB386 /* Home.png */; };
-		F812EF1F1BBE774600AAB386 /* Hotel.png in Resources */ = {isa = PBXBuildFile; fileRef = F812EF1C1BBE774600AAB386 /* Hotel.png */; };
-		F812EF201BBE774600AAB386 /* Left Footprint.png in Resources */ = {isa = PBXBuildFile; fileRef = F812EF1D1BBE774600AAB386 /* Left Footprint.png */; };
-		F812EF231BBE775000AAB386 /* Restaurant.png in Resources */ = {isa = PBXBuildFile; fileRef = F812EF211BBE775000AAB386 /* Restaurant.png */; };
-		F812EF241BBE775000AAB386 /* Search.png in Resources */ = {isa = PBXBuildFile; fileRef = F812EF221BBE775000AAB386 /* Search.png */; };
 		F815F2071BDDF3AF00CDFF8E /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = F815F2061BDDF3AF00CDFF8E /* Background.png */; };
 		F815F2091BDDF3C700CDFF8E /* First.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F815F2081BDDF3C700CDFF8E /* First.jpg */; };
-		F815F20C1BDDFBCB00CDFF8E /* Logo_29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F815F20B1BDDFBCB00CDFF8E /* Logo_29@2x.png */; };
-		F815F20E1BDDFC0C00CDFF8E /* Logo_29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F815F20D1BDDFC0C00CDFF8E /* Logo_29@3x.png */; };
-		F815F2111BDDFC4D00CDFF8E /* Logo_40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F815F20F1BDDFC4D00CDFF8E /* Logo_40@2x.png */; };
-		F815F2121BDDFC4D00CDFF8E /* Logo_40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F815F2101BDDFC4D00CDFF8E /* Logo_40@3x.png */; };
-		F815F2151BDDFC9900CDFF8E /* Logo_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F815F2131BDDFC9900CDFF8E /* Logo_60@2x.png */; };
-		F815F2161BDDFC9900CDFF8E /* Logo_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F815F2141BDDFC9900CDFF8E /* Logo_60@3x.png */; };
 		F815F21C1BDE071700CDFF8E /* B_Aim.png in Resources */ = {isa = PBXBuildFile; fileRef = F815F2181BDE071700CDFF8E /* B_Aim.png */; };
 		F815F21D1BDE071700CDFF8E /* B_Hotel01.png in Resources */ = {isa = PBXBuildFile; fileRef = F815F2191BDE071700CDFF8E /* B_Hotel01.png */; };
 		F815F21E1BDE071700CDFF8E /* B_Hotel02.png in Resources */ = {isa = PBXBuildFile; fileRef = F815F21A1BDE071700CDFF8E /* B_Hotel02.png */; };
@@ -77,6 +65,13 @@
 		F8EE4C271BD8754F00129464 /* Like.png in Resources */ = {isa = PBXBuildFile; fileRef = F8EE4C251BD8754F00129464 /* Like.png */; };
 		F8EE4C291BD882B600129464 /* Like_F.png in Resources */ = {isa = PBXBuildFile; fileRef = F8EE4C281BD882B600129464 /* Like_F.png */; };
 		F8EE4C2B1BD8929000129464 /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = F8EE4C2A1BD8929000129464 /* Map.png */; };
+		F8F803121BE0727300EA7946 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8F803111BE0727300EA7946 /* Images.xcassets */; };
+		F8F803191BE0742D00EA7946 /* Logo_29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8F803131BE0742D00EA7946 /* Logo_29@2x.png */; };
+		F8F8031A1BE0742D00EA7946 /* Logo_29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8F803141BE0742D00EA7946 /* Logo_29@3x.png */; };
+		F8F8031B1BE0742D00EA7946 /* Logo_40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8F803151BE0742D00EA7946 /* Logo_40@2x.png */; };
+		F8F8031C1BE0742D00EA7946 /* Logo_40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8F803161BE0742D00EA7946 /* Logo_40@3x.png */; };
+		F8F8031D1BE0742D00EA7946 /* Logo_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8F803171BE0742D00EA7946 /* Logo_60@2x.png */; };
+		F8F8031E1BE0742D00EA7946 /* Logo_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8F803181BE0742D00EA7946 /* Logo_60@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,7 +98,6 @@
 		F812EE8E1BBE4D7800AAB386 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F812EE941BBE4D7800AAB386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F812EE971BBE4D7800AAB386 /* KCG_Travel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KCG_Travel.xcdatamodel; sourceTree = "<group>"; };
-		F812EE991BBE4D7800AAB386 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F812EE9C1BBE4D7800AAB386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F812EE9E1BBE4D7800AAB386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F812EEA31BBE4D7800AAB386 /* KCG_TravelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KCG_TravelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,19 +140,8 @@
 		F812EF151BBE515900AAB386 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F812EF171BBE516100AAB386 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F812EF191BBE774000AAB386 /* Bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Bookmark.png; path = pics/Bookmark.png; sourceTree = "<group>"; };
-		F812EF1B1BBE774600AAB386 /* Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Home.png; path = pics/Home.png; sourceTree = "<group>"; };
-		F812EF1C1BBE774600AAB386 /* Hotel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Hotel.png; path = pics/Hotel.png; sourceTree = "<group>"; };
-		F812EF1D1BBE774600AAB386 /* Left Footprint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Left Footprint.png"; path = "pics/Left Footprint.png"; sourceTree = "<group>"; };
-		F812EF211BBE775000AAB386 /* Restaurant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Restaurant.png; path = pics/Restaurant.png; sourceTree = "<group>"; };
-		F812EF221BBE775000AAB386 /* Search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Search.png; path = pics/Search.png; sourceTree = "<group>"; };
 		F815F2061BDDF3AF00CDFF8E /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background.png; path = pics/Background.png; sourceTree = "<group>"; };
 		F815F2081BDDF3C700CDFF8E /* First.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = First.jpg; path = pics/First.jpg; sourceTree = "<group>"; };
-		F815F20B1BDDFBCB00CDFF8E /* Logo_29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_29@2x.png"; path = "pics/Logo/Logo_29@2x.png"; sourceTree = "<group>"; };
-		F815F20D1BDDFC0C00CDFF8E /* Logo_29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_29@3x.png"; path = "pics/Logo/Logo_29@3x.png"; sourceTree = "<group>"; };
-		F815F20F1BDDFC4D00CDFF8E /* Logo_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_40@2x.png"; path = "pics/Logo/Logo_40@2x.png"; sourceTree = "<group>"; };
-		F815F2101BDDFC4D00CDFF8E /* Logo_40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_40@3x.png"; path = "pics/Logo/Logo_40@3x.png"; sourceTree = "<group>"; };
-		F815F2131BDDFC9900CDFF8E /* Logo_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_60@2x.png"; path = "pics/Logo/Logo_60@2x.png"; sourceTree = "<group>"; };
-		F815F2141BDDFC9900CDFF8E /* Logo_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_60@3x.png"; path = "pics/Logo/Logo_60@3x.png"; sourceTree = "<group>"; };
 		F815F2181BDE071700CDFF8E /* B_Aim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = B_Aim.png; path = pics/button/B_Aim.png; sourceTree = "<group>"; };
 		F815F2191BDE071700CDFF8E /* B_Hotel01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = B_Hotel01.png; path = pics/button/B_Hotel01.png; sourceTree = "<group>"; };
 		F815F21A1BDE071700CDFF8E /* B_Hotel02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = B_Hotel02.png; path = pics/button/B_Hotel02.png; sourceTree = "<group>"; };
@@ -186,6 +169,13 @@
 		F8EE4C251BD8754F00129464 /* Like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Like.png; path = pics/Like.png; sourceTree = "<group>"; };
 		F8EE4C281BD882B600129464 /* Like_F.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Like_F.png; path = pics/Like_F.png; sourceTree = "<group>"; };
 		F8EE4C2A1BD8929000129464 /* Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Map.png; path = pics/Map.png; sourceTree = "<group>"; };
+		F8F803111BE0727300EA7946 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F8F803131BE0742D00EA7946 /* Logo_29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_29@2x.png"; path = "pics/Logo/Logo_29@2x.png"; sourceTree = "<group>"; };
+		F8F803141BE0742D00EA7946 /* Logo_29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_29@3x.png"; path = "pics/Logo/Logo_29@3x.png"; sourceTree = "<group>"; };
+		F8F803151BE0742D00EA7946 /* Logo_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_40@2x.png"; path = "pics/Logo/Logo_40@2x.png"; sourceTree = "<group>"; };
+		F8F803161BE0742D00EA7946 /* Logo_40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_40@3x.png"; path = "pics/Logo/Logo_40@3x.png"; sourceTree = "<group>"; };
+		F8F803171BE0742D00EA7946 /* Logo_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_60@2x.png"; path = "pics/Logo/Logo_60@2x.png"; sourceTree = "<group>"; };
+		F8F803181BE0742D00EA7946 /* Logo_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_60@3x.png"; path = "pics/Logo/Logo_60@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,10 +239,10 @@
 				F812EE8D1BBE4D7800AAB386 /* AppDelegate.h */,
 				F812EE8E1BBE4D7800AAB386 /* AppDelegate.m */,
 				F812EE931BBE4D7800AAB386 /* Main.storyboard */,
-				F812EE991BBE4D7800AAB386 /* Assets.xcassets */,
 				F812EE9B1BBE4D7800AAB386 /* LaunchScreen.storyboard */,
 				F812EE9E1BBE4D7800AAB386 /* Info.plist */,
 				F812EE961BBE4D7800AAB386 /* KCG_Travel.xcdatamodeld */,
+				F8F803111BE0727300EA7946 /* Images.xcassets */,
 				F812EE8A1BBE4D7800AAB386 /* Supporting Files */,
 			);
 			path = KCG_Travel;
@@ -326,11 +316,6 @@
 				F88DA9511BC25940007DC071 /* Marker_Hotel01.png */,
 				F88DA9521BC25940007DC071 /* Marker_Hotel02.png */,
 				F88DA9531BC25940007DC071 /* Marker_Restaurant.png */,
-				F812EF211BBE775000AAB386 /* Restaurant.png */,
-				F812EF221BBE775000AAB386 /* Search.png */,
-				F812EF1B1BBE774600AAB386 /* Home.png */,
-				F812EF1C1BBE774600AAB386 /* Hotel.png */,
-				F812EF1D1BBE774600AAB386 /* Left Footprint.png */,
 				F812EF191BBE774000AAB386 /* Bookmark.png */,
 				F812EEE11BBE4E4B00AAB386 /* Checked Checkbox.png */,
 				F812EEE21BBE4E4B00AAB386 /* Facebook Filled.png */,
@@ -366,12 +351,12 @@
 		F815F20A1BDDFBC000CDFF8E /* logo */ = {
 			isa = PBXGroup;
 			children = (
-				F815F2131BDDFC9900CDFF8E /* Logo_60@2x.png */,
-				F815F2141BDDFC9900CDFF8E /* Logo_60@3x.png */,
-				F815F20F1BDDFC4D00CDFF8E /* Logo_40@2x.png */,
-				F815F2101BDDFC4D00CDFF8E /* Logo_40@3x.png */,
-				F815F20D1BDDFC0C00CDFF8E /* Logo_29@3x.png */,
-				F815F20B1BDDFBCB00CDFF8E /* Logo_29@2x.png */,
+				F8F803131BE0742D00EA7946 /* Logo_29@2x.png */,
+				F8F803141BE0742D00EA7946 /* Logo_29@3x.png */,
+				F8F803151BE0742D00EA7946 /* Logo_40@2x.png */,
+				F8F803161BE0742D00EA7946 /* Logo_40@3x.png */,
+				F8F803171BE0742D00EA7946 /* Logo_60@2x.png */,
+				F8F803181BE0742D00EA7946 /* Logo_60@3x.png */,
 			);
 			name = logo;
 			sourceTree = "<group>";
@@ -511,25 +496,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8F8031C1BE0742D00EA7946 /* Logo_40@3x.png in Resources */,
 				F8EE4C271BD8754F00129464 /* Like.png in Resources */,
-				F812EF1F1BBE774600AAB386 /* Hotel.png in Resources */,
+				F8F8031B1BE0742D00EA7946 /* Logo_40@2x.png in Resources */,
 				F815F2291BDE0B8500CDFF8E /* B_footprint.png in Resources */,
 				F815F21F1BDE071700CDFF8E /* B_Menu.png in Resources */,
 				F8AC53CA1BCB85720070B1D6 /* 3Star.png in Resources */,
-				F812EF241BBE775000AAB386 /* Search.png in Resources */,
 				F815F21C1BDE071700CDFF8E /* B_Aim.png in Resources */,
 				F812EEF31BBE4E4B00AAB386 /* Location.png in Resources */,
-				F815F20E1BDDFC0C00CDFF8E /* Logo_29@3x.png in Resources */,
 				F896DE121BCDDE5E009F64AC /* MRT_R.png in Resources */,
-				F815F2111BDDFC4D00CDFF8E /* Logo_40@2x.png in Resources */,
 				F88DA9571BC25940007DC071 /* Marker_Restaurant.png in Resources */,
-				F815F2151BDDFC9900CDFF8E /* Logo_60@2x.png in Resources */,
 				F8EE4C291BD882B600129464 /* Like_F.png in Resources */,
 				F815F21D1BDE071700CDFF8E /* B_Hotel01.png in Resources */,
 				F896DE0E1BCDDD30009F64AC /* MRT.json in Resources */,
 				F8AC53CB1BCB85720070B1D6 /* 4Star.png in Resources */,
 				F812EEF01BBE4E4B00AAB386 /* Facebook Filled.png in Resources */,
 				F88DA9561BC25940007DC071 /* Marker_Hotel02.png in Resources */,
+				F8F8031A1BE0742D00EA7946 /* Logo_29@3x.png in Resources */,
 				F896DE141BCDFBB0009F64AC /* aim.png in Resources */,
 				F815F22B1BDE0B8500CDFF8E /* B_Hotel.png in Resources */,
 				F812EEF11BBE4E4B00AAB386 /* facebook.png in Resources */,
@@ -537,27 +520,24 @@
 				F815F2091BDDF3C700CDFF8E /* First.jpg in Resources */,
 				F815F22A1BDE0B8500CDFF8E /* B_Home.png in Resources */,
 				F8EE4C2B1BD8929000129464 /* Map.png in Resources */,
+				F8F8031E1BE0742D00EA7946 /* Logo_60@3x.png in Resources */,
 				F812EE9D1BBE4D7800AAB386 /* LaunchScreen.storyboard in Resources */,
-				F815F2121BDDFC4D00CDFF8E /* Logo_40@3x.png in Resources */,
+				F8F8031D1BE0742D00EA7946 /* Logo_60@2x.png in Resources */,
+				F8F803191BE0742D00EA7946 /* Logo_29@2x.png in Resources */,
 				F88DA9551BC25940007DC071 /* Marker_Hotel01.png in Resources */,
 				F8AC53CC1BCB85720070B1D6 /* 5Star.png in Resources */,
-				F812EF231BBE775000AAB386 /* Restaurant.png in Resources */,
-				F812EF201BBE774600AAB386 /* Left Footprint.png in Resources */,
 				F8AC53CF1BCB85720070B1D6 /* Paper Plane.png in Resources */,
 				F896DE101BCDDE55009F64AC /* MRT_O.png in Resources */,
 				F812EEEF1BBE4E4B00AAB386 /* Checked Checkbox.png in Resources */,
 				F815F2241BDE0A8800CDFF8E /* B_Self.png in Resources */,
 				F815F21E1BDE071700CDFF8E /* B_Hotel02.png in Resources */,
 				F8AC53CE1BCB85720070B1D6 /* OtherHotel.png in Resources */,
-				F815F20C1BDDFBCB00CDFF8E /* Logo_29@2x.png in Resources */,
 				F8AC53CD1BCB85720070B1D6 /* CurrentLocation.png in Resources */,
 				F815F2071BDDF3AF00CDFF8E /* Background.png in Resources */,
-				F812EF1E1BBE774600AAB386 /* Home.png in Resources */,
-				F812EE9A1BBE4D7800AAB386 /* Assets.xcassets in Resources */,
+				F8F803121BE0727300EA7946 /* Images.xcassets in Resources */,
 				F812EEFC1BBE4E4B00AAB386 /* Unchecked Checkbox.png in Resources */,
 				F812EEF21BBE4E4B00AAB386 /* Line.png in Resources */,
 				F88DA9541BC25940007DC071 /* Marker_Footprint.png in Resources */,
-				F815F2161BDDFC9900CDFF8E /* Logo_60@3x.png in Resources */,
 				F812EE951BBE4D7800AAB386 /* Main.storyboard in Resources */,
 				F812EF1A1BBE774000AAB386 /* Bookmark.png in Resources */,
 				F815F22C1BDE0B8500CDFF8E /* B_Restaurant.png in Resources */,
@@ -738,7 +718,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = KCG_Travel/Info.plist;
@@ -754,7 +733,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = KCG_Travel/Info.plist;

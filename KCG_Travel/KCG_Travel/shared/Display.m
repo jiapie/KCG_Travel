@@ -136,12 +136,14 @@
 
 +(void)setMainTitleButton:(id)thisButton and:(BOOL)bFirst and:(NSInteger)iIndex
 {
+    CGFloat space = 10.0;
+    
     CGFloat W = MainMenuBarH;
     CGFloat H = MainMenuBarH;
-    CGFloat X = 0 + (UI_SCREEN_W * 0.05) + (MainMenuBarH * iIndex);
+    CGFloat X = 0 + (UI_SCREEN_W * 0.05) + ((MainMenuBarH + space) * iIndex);
     if(bFirst == NO)
     {
-        X = (UI_SCREEN_W * 0.9) -  MainMenuBarH - (MainMenuBarH * iIndex);
+        X = (UI_SCREEN_W * 0.9) -  MainMenuBarH - ((MainMenuBarH + space) * iIndex);
     }
     CGFloat Y = StartTopH ;
     

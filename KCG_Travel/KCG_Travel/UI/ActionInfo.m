@@ -89,7 +89,8 @@
         //NSLog(@"%f",dbDuringDay);
         NSString *sActionTime = [NSString stringWithFormat:@"%@ ~ %@",sStart,sEnd];
         
-        if(dbDuringDay > 0)
+        //if(dbDuringDay > 0)
+        if(dbDuringDay > -90)
         {
             NSData *Name = [dItem valueForKey:@"Name"];
             NSString *sName = [NSString stringWithFormat:@"%@",Name];

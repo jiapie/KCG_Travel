@@ -12,7 +12,7 @@
 #import "Global.h"
 
 #define StartTopH       30
-#define MainMenuBarH    40
+#define MainMenuBarH    30
 #define SearchBarH      44
 #define HintBarH        21
 #define MenuBarH        44
