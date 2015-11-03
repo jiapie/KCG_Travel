@@ -131,19 +131,21 @@
 {
     UITableViewCell *cellView = [tableView cellForRowAtIndexPath: indexPath];
     [bChooseLocation setTitle:cellView.textLabel.text forState:UIControlStateNormal];
-    //+(MKPointAnnotation *) getAddressLatLng:(NSString *)sAddress;
 
     NSString *sAddress = [NSString stringWithFormat:@"%@%@",sKaohsiungCity, cellView.textLabel.text];
     MKPointAnnotation *point = [Global getAddressLatLng:sAddress];
-    MKCoordinateRegion region = {point.coordinate ,NearbyMap};
-    [thisMap setRegion:region animated:YES];
+    if(point != nil)
+    {
+        MKCoordinateRegion region = {point.coordinate ,NearbyMap};
+        [thisMap setRegion:region animated:YES];
 
-    [thisTableView setHidden:YES];
-    
-    //RECORD
-    RecordInfo = [global.dGlobal valueForKey:sJson_Record];
-    [RecordInfo setValue:cellView.textLabel.text forKey:sJson_Area];
-    [global.dGlobal setValue:RecordInfo forKey:sJson_Record];
+        [thisTableView setHidden:YES];
+        
+        //RECORD
+        RecordInfo = [global.dGlobal valueForKey:sJson_Record];
+        [RecordInfo setValue:cellView.textLabel.text forKey:sJson_Area];
+        [global.dGlobal setValue:RecordInfo forKey:sJson_Record];
+    }
 }
 
 -(void)DisplayScreen
@@ -244,8 +246,11 @@
     {
         NSString *sAddress = [NSString stringWithFormat:@"%@%@",sKaohsiungCity, sArea];
         MKPointAnnotation *point = [Global getAddressLatLng:sAddress];
-        MKCoordinateRegion region = {point.coordinate ,NearbyMap};
-        [thisMap setRegion:region animated:YES];
+        if(point != nil)
+        {
+            MKCoordinateRegion region = {point.coordinate ,NearbyMap};
+            [thisMap setRegion:region animated:YES];
+        }
     }
 }
 
