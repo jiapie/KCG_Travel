@@ -58,7 +58,7 @@
     singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [thisMap addGestureRecognizer:singleTap];
     
-    tableArray = [[NSArray alloc]initWithObjects:@"楠梓區", @"左營區", @"鼓山區", @"三民區", @"鹽埕區", @"前金區", @"新興區", @"苓雅區", @"前鎮區", @"旗津區", @"小港區", @"鳳山區", @"大寮區", @"鳥松區", @"林園區", @"仁武區", @"大樹區", @"大社區", @"岡山區", @"路竹區", @"橋頭區", @"梓官區", @"彌陀區", @"永安區", @"燕巢區", @"田寮區", @"阿蓮區", @"茄萣區", @"湖內區", @"旗山區", @"美濃區", @"內門區", @"杉林區", @"甲仙區", @"六龜區", @"茂林區", @"桃源區", @"那瑪夏區", nil];
+    tableArray = [[NSMutableArray alloc]initWithObjects:@"楠梓區", @"左營區", @"鼓山區", @"三民區", @"鹽埕區", @"前金區", @"新興區", @"苓雅區", @"前鎮區", @"旗津區", @"小港區", @"鳳山區", @"大寮區", @"鳥松區", @"林園區", @"仁武區", @"大樹區", @"大社區", @"岡山區", @"路竹區", @"橋頭區", @"梓官區", @"彌陀區", @"永安區", @"燕巢區", @"田寮區", @"阿蓮區", @"茄萣區", @"湖內區", @"旗山區", @"美濃區", @"內門區", @"杉林區", @"甲仙區", @"六龜區", @"茂林區", @"桃源區", @"那瑪夏區", nil];
     
     //設定所觸發的事件條件與對應事件
     [segmented01 addTarget:self action:@selector(segmented01ControlIndexChanged:) forControlEvents:UIControlEventValueChanged];
@@ -132,19 +132,66 @@
     UITableViewCell *cellView = [tableView cellForRowAtIndexPath: indexPath];
     [bChooseLocation setTitle:cellView.textLabel.text forState:UIControlStateNormal];
 
-    NSString *sAddress = [NSString stringWithFormat:@"%@%@",sKaohsiungCity, cellView.textLabel.text];
-    MKPointAnnotation *point = [Global getAddressLatLng:sAddress];
-    if(point != nil)
+    if(iDisplayMode == DisplayLocation)
     {
-        MKCoordinateRegion region = {point.coordinate ,NearbyMap};
-        [thisMap setRegion:region animated:YES];
+        NSString *sAddress = [NSString stringWithFormat:@"%@%@",sKaohsiungCity, cellView.textLabel.text];
+        MKPointAnnotation *point = [Global getAddressLatLng:sAddress];
+        if(point != nil)
+        {
+            MKCoordinateRegion region = {point.coordinate ,NearbyMap};
+            [thisMap setRegion:region animated:YES];
 
-        [thisTableView setHidden:YES];
+            [thisTableView setHidden:YES];
         
-        //RECORD
-        RecordInfo = [global.dGlobal valueForKey:sJson_Record];
-        [RecordInfo setValue:cellView.textLabel.text forKey:sJson_Area];
-        [global.dGlobal setValue:RecordInfo forKey:sJson_Record];
+            //RECORD
+            RecordInfo = [global.dGlobal valueForKey:sJson_Record];
+            [RecordInfo setValue:cellView.textLabel.text forKey:sJson_Area];
+            [global.dGlobal setValue:RecordInfo forKey:sJson_Record];
+        }
+    }
+    else //if(iDisplayMode ==DisplayMRT)
+    {
+        //NSLog(@"showMRT");
+        NSString *sPath = [[NSBundle mainBundle] bundlePath];
+        NSString *sFile = [sPath stringByAppendingPathComponent:@"MRT.json"];
+        NSFileManager *fm = [NSFileManager defaultManager];
+        if([fm fileExistsAtPath:sFile] == YES)
+        {
+            NSFileHandle *handle01 = [NSFileHandle fileHandleForReadingAtPath:sFile];
+            NSData *sAllData = [[NSData alloc]initWithData:[handle01 readDataToEndOfFile]];
+            NSArray *aMRTInfo = [NSArray arrayWithJSONData:sAllData];
+            //NSLog(@"aMRTInfo:%@",aMRTInfo);
+            
+            NSDictionary *dItem = aMRTInfo[indexPath.row];
+            //經度
+            NSData *Longitude = [dItem valueForKey:@"車站經度"];
+            NSString *sLongitude = [NSString stringWithFormat:@"%@",Longitude];
+            double dbLongitude = [sLongitude doubleValue];
+            //緯度
+            NSData *Latitude = [dItem valueForKey:@"車站緯度"];
+            NSString *sLatitude = [NSString stringWithFormat:@"%@",Latitude];
+            double dbLatitude = [sLatitude doubleValue];
+            
+            CLLocationCoordinate2D naviCoord = CLLocationCoordinate2DMake(dbLatitude,dbLongitude);
+            
+            NSString *title = tableArray[indexPath.row];
+            MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+            point.title = title;
+            point.coordinate = naviCoord;
+            
+            if(point != nil)
+            {
+                MKCoordinateRegion region = {point.coordinate ,NearbyMap};
+                [thisMap setRegion:region animated:YES];
+                
+                [thisTableView setHidden:YES];
+                
+                //RECORD
+                RecordInfo = [global.dGlobal valueForKey:sJson_Record];
+                [RecordInfo setValue:cellView.textLabel.text forKey:sJson_Area];
+                [global.dGlobal setValue:RecordInfo forKey:sJson_Record];
+            }
+        }
     }
 }
 
@@ -677,6 +724,18 @@
     if(thisTableView.hidden == YES)
     {
         [thisTableView setHidden:NO];
+        
+        [tableArray removeAllObjects];
+        if(iDisplayMode == DisplayLocation)
+        {
+            tableArray = [[NSMutableArray alloc]initWithObjects:@"楠梓區", @"左營區", @"鼓山區", @"三民區", @"鹽埕區", @"前金區", @"新興區", @"苓雅區", @"前鎮區", @"旗津區", @"小港區", @"鳳山區", @"大寮區", @"鳥松區", @"林園區", @"仁武區", @"大樹區", @"大社區", @"岡山區", @"路竹區", @"橋頭區", @"梓官區", @"彌陀區", @"永安區", @"燕巢區", @"田寮區", @"阿蓮區", @"茄萣區", @"湖內區", @"旗山區", @"美濃區", @"內門區", @"杉林區", @"甲仙區", @"六龜區", @"茂林區", @"桃源區", @"那瑪夏區", nil];
+        }
+        else
+        {
+            tableArray = [[NSMutableArray alloc]initWithObjects:@"R3 小港", @"R4 高雄國際機場", @"R4A 草衙", @"R5 前鎮高中", @"R6 凱旋", @"R7 獅甲", @"R8 三多商圈", @"R9 中央公園", @"R10 美麗島", @"R11 高雄車站", @"R12 後驛", @"R13 凹子底", @"R14 巨蛋", @"R15 生態園區", @"R16 左營", @"R17 世運", @"R18 油廠國小", @"R19 楠梓加工區", @"R20 後勁", @"R21 都會公園", @"R22 青埔", @"R22A 橋頭糖廠", @"R23 橋頭火車站", @"R24 南岡山", @"O1 西子灣", @"O2 鹽埕埔", @"O4 市議會", @"O5 美麗島", @"O6 信義國小", @"O7 文化中心", @"O8 五塊厝", @"O9 技擊館", @"O10 衛武營", @"O11 鳳山西站", @"O12 鳳山", @"O13  大東", @"O14 鳳山國中", @"OT1 大寮", @"O5/R10 美麗島", nil];
+        }
+        
+        [thisTableView reloadData];
     }
     else
     {
@@ -708,8 +767,13 @@
         case 0: //所在位置
             [self bAim_Action:nil];
             break;
-
-        case 1: //最近捷運站
+            
+        case 1: //行政區
+            iDisplayMode = DisplayLocation;
+            [bChooseLocation setEnabled:YES];
+            break;
+            
+        case 2: //最近捷運站
             {
                 double dbLatitude = self.locationManager.location.coordinate.latitude;
                 double dbLongitude = self.locationManager.location.coordinate.longitude;
@@ -745,10 +809,11 @@
             }
             break;
             
-        case 2: //行政區
+        case 3: //捷運站
+            iDisplayMode = DisplayMRT;
             [bChooseLocation setEnabled:YES];
             break;
-    
+            
         default:
             break;
     }

@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Global.h"
 
+enum DisplayMode
+{
+    DisplayMRT = 0,
+    DisplayLocation,
+};
+
 @interface SelfInfoViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate,CLLocationManagerDelegate>
 
 {
@@ -40,8 +46,10 @@
     Global                  *global;
     NSMutableArray          *allPoint;
     NSMutableArray          *allPointXY;
-    NSArray                 *tableArray;
+    NSMutableArray          *tableArray;
     NSMutableDictionary     *RecordInfo;
+    
+    enum DisplayMode        iDisplayMode;
 }
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
